@@ -221,14 +221,12 @@ button{font:inherit;color:inherit}
 .stepper button:hover{background:rgba(95,168,211,.2)}
 .stepper input{width:54px;height:44px;border:0;background:none;color:var(--vit);font:inherit;font-weight:700;font-size:17px;text-align:center;-moz-appearance:textfield}
 .stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.panes{display:flex;flex-wrap:wrap;gap:5px;margin-top:16px;min-height:22px}
-.panes i{width:16px;height:16px;border-radius:4px;border:2px solid var(--frost);display:block;animation:pop .2s var(--ease)}
-.panes i.x{background:var(--glas);border-color:var(--glas)}
-@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
-.panes__key{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--frost);margin-top:10px}
-.panes__key span{display:inline-flex;align-items:center;gap:6px}
-.panes__key i{width:12px;height:12px;border-radius:3px;border:2px solid var(--frost);display:inline-block}
-.panes__key i.x{background:var(--glas);border-color:var(--glas)}
+.meter{margin-top:16px}
+.meter__bar{position:relative;height:10px;border-radius:999px;background:rgba(191,214,232,.18);overflow:hidden;display:flex}
+.meter__in{height:100%;background:var(--frost);transition:width .3s var(--ease)}
+.meter__ex{height:100%;background:var(--glas);transition:width .3s var(--ease)}
+.meter__txt{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--frost);margin-top:10px}
+.meter__txt b{color:var(--vit);font-weight:700}
 .toggles{display:grid;gap:12px}
 .check{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border-radius:12px;border:2px solid rgba(191,214,232,.25);cursor:pointer}
 .check:has(input:checked){border-color:var(--glas);background:rgba(95,168,211,.1)}
@@ -532,8 +530,10 @@ button{font:inherit;color:inherit}
                     <button type="button" data-step-n="1" aria-label="Ett fönster till">+</button>
                   </div>
                 </div>
-                <div class="panes" id="panes" aria-hidden="true"></div>
-                <div class="panes__key" aria-hidden="true"><span><i></i>Ingår i grundpriset</span><span><i class="x"></i>Extra fönster</span></div>
+                <div class="meter" aria-hidden="true">
+                  <div class="meter__bar"><div class="meter__in" id="m-in"></div><div class="meter__ex" id="m-ex"></div></div>
+                  <div class="meter__txt"><span id="m-left"></span><span id="m-right"></span></div>
+                </div>
                 <p class="note" id="biz-note" hidden style="margin-top:14px">Har ni fler än 20 fönster bekräftar vi priset när vi hör av oss.</p>
               </div>
 
@@ -869,7 +869,7 @@ button{font:inherit;color:inherit}
   };
   var INGAR=20,SPROJS=10;
 
-  var range=$('antal-range'),num=$('antal'),over=$('over'),sOn=$('sprojs-on'),sRow=$('sprojs-row'),sNum=$('sprojs'),panes=$('panes');
+  var range=$('antal-range'),num=$('antal'),over=$('over'),sOn=$('sprojs-on'),sRow=$('sprojs-row'),sNum=$('sprojs');
   var bigEl=$('sum-big'),shown=250,state={};
   function clamp(v,a,b){v=parseInt(v,10);if(isNaN(v))v=a;return Math.max(a,Math.min(b,v))}
   function tween(to){
@@ -879,7 +879,6 @@ button{font:inherit;color:inherit}
   }
   function val(name){return document.querySelector('input[name='+name+']:checked').value}
 
-  var lastPanes=-1;
   function calc(){
     var kund=val('kund'),t=val('tjanst');
     var abo=$('t-abo');
@@ -921,12 +920,11 @@ button{font:inherit;color:inherit}
     $('sum-title').textContent=title;$('sum-sub').textContent=sub;
     if(big!==shown)tween(big);
 
-    var show=Math.min(n,60);
-    if(show!==lastPanes||panes.dataset.k!==kund){
-      var h='';for(var i=0;i<show;i++)h+='<i'+(i>=INGAR?' class="x"':'')+'></i>';
-      if(n>60)h+='<span style="font-size:13px;color:#BFD6E8;align-self:center">+'+(n-60)+'</span>';
-      panes.innerHTML=h;lastPanes=show;panes.dataset.k=kund;
-    }
+    var scale=Math.max(INGAR*1.5,n),inN=Math.min(n,INGAR);
+    $('m-in').style.width=(inN/scale*100)+'%';
+    $('m-ex').style.width=(extraN/scale*100)+'%';
+    $('m-left').innerHTML='<b>'+inN+' av '+INGAR+'</b> ingår';
+    $('m-right').innerHTML=extraN?'<b>+'+extraN+' extra</b>':'';
     state.n=n;state.over=over.checked;state.s=s;
   }
   range.addEventListener('input',function(){num.value=range.value;calc()});
