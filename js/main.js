@@ -8,7 +8,8 @@
      pushnotis när någon bokar eller frågar. Notisen innehåller inga personuppgifter. */
   /* CF_ANALYTICS_TOKEN: token från Cloudflare Web Analytics. Besöksstatistik utan cookies. */
   var CF_ANALYTICS_TOKEN = 'd2bf71420edd49898d72905a657209fa';
-  if(CF_ANALYTICS_TOKEN){var cf=document.createElement('script');cf.defer=true;cf.src='https://static.cloudflareinsights.com/beacon.min.js';cf.setAttribute('data-cf-beacon',JSON.stringify({token:CF_ANALYTICS_TOKEN}));document.body.appendChild(cf)}
+  function loadStats(){var cf=document.createElement('script');cf.defer=true;cf.src='https://static.cloudflareinsights.com/beacon.min.js';cf.setAttribute('data-cf-beacon',JSON.stringify({token:CF_ANALYTICS_TOKEN}));document.body.appendChild(cf)}
+  if(CF_ANALYTICS_TOKEN)window.addEventListener('load',function(){(window.requestIdleCallback||function(f){setTimeout(f,1500)})(loadStats,{timeout:4000})});
   var NTFY_TOPIC = 'fenstro-ddd9891c7f64';
 
   var $ = function(id){return document.getElementById(id)};
