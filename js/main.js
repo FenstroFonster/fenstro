@@ -17,10 +17,10 @@
 
   /* Sidhuvud, meny, mobilrad */
   var top=$('top'),dock=$('dock'),hero=document.querySelector('.hero'),boka=$('boka');
-  var bokaVisible=false,pastHero=false,scrolled=false,inClean=false;
+  var bokaVisible=false,pastHero=false,scrolled=false;
   window.addEventListener('scroll',function(){var sc=window.scrollY>8;if(sc!==scrolled){scrolled=sc;onScroll()}},{passive:true});
   function onScroll(){
-    dock.classList.toggle('is-on',pastHero&&!bokaVisible&&!inClean);
+    dock.classList.toggle('is-on',pastHero&&!bokaVisible);
     top.classList.toggle('is-scrolled',scrolled);
   }
   var mb=document.querySelector('.menu-btn'),nav=$('nav');
@@ -49,33 +49,9 @@
     var io2=new IntersectionObserver(function(en){bokaVisible=en[0].isIntersecting;onScroll()},{threshold:0});
     io2.observe(boka);
     new IntersectionObserver(function(en){pastHero=!en[0].isIntersecting;onScroll()}).observe(hero);
-    new IntersectionObserver(function(en){inClean=en[0].isIntersecting;onScroll()}).observe($('skillnad'));
   }
   onScroll();
 
-  /* Skrolla, så putsar vi: skrapan följer skrollen */
-  (function(){
-    var sec=$('skillnad'),track=sec.querySelector('.clean__track'),frame=$('clean-frame'),pctEl=$('clean-pct');
-    if(reduce){sec.style.setProperty('--p',.5);frame.style.setProperty('--x',frame.offsetWidth*.5+'px');pctEl.textContent='50';return}
-    var on=false,ticking=false,w=0,last=-1;
-    function measure(){w=frame.offsetWidth}
-    function update(){
-      ticking=false;
-      var r=track.getBoundingClientRect(),vh=window.innerHeight;
-      var raw=(-r.top)/(r.height-vh);
-      var p=Math.min(1,Math.max(0,(raw-.08)/.8));
-      p=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
-      if(Math.abs(p-last)<.001)return;last=p;
-      sec.style.setProperty('--p',p.toFixed(4));
-      frame.style.setProperty('--x',(p*w).toFixed(1)+'px');
-      frame.style.setProperty('--done',p>.985?1:0);
-      pctEl.textContent=Math.round(p*100);
-    }
-    function onS(){if(on&&!ticking){ticking=true;requestAnimationFrame(update)}}
-    new IntersectionObserver(function(en){on=en[0].isIntersecting;if(on){measure();onS()}}).observe(track);
-    window.addEventListener('scroll',onS,{passive:true});
-    window.addEventListener('resize',function(){measure();last=-1;onS()},{passive:true});
-  })();
 
   /* Flikar privat/företag */
   var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
