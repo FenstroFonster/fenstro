@@ -578,9 +578,9 @@ button{font:inherit;color:inherit}
                 <div class="inp"><label for="b-mail">E-post</label><input id="b-mail" type="email" autocomplete="email" required></div>
               </div>
               <p class="note" id="rut-note">För RUT-avdraget behöver vi ditt personnummer. Det frågar vi efter när vi bekräftar bokningen, inte här.</p>
-              <div style="display:grid;gap:12px">
-                <label class="consent"><input type="checkbox" id="b-ok" required><span>Jag godkänner att Fenstro använder uppgifterna för att kontakta mig om bokningen. <a href="integritet.html" style="color:#BFD6E8">Så hanterar vi uppgifterna</a></span></label>
-                <p style="font-size:13px;color:#BFD6E8;margin:0">Som kund kan du få påminnelser och erbjudanden om fönsterputs från oss via mejl och sms. Du kan säga nej när du vill. <label style="display:inline-flex;gap:8px;align-items:center;margin-top:6px;cursor:pointer"><input type="checkbox" id="b-nej" style="width:16px;height:16px;accent-color:#5FA8D3">Nej tack, skicka inga utskick till mig</label></p>
+              <div class="toggles">
+                <label class="check"><span>Ni får kontakta mig om fönsterputsen<small>Vi ringer, sms:ar eller mejlar för att bekräfta tid och pris. <a href="integritet.html" style="color:#BFD6E8">Så hanterar vi uppgifterna</a></small></span><input type="checkbox" id="b-ok" required></label>
+                <label class="check"><span>Ni får skicka påminnelser och erbjudanden<small>Via mejl och sms, bara om fönsterputs. Kryssa ur om du inte vill ha några utskick.</small></span><input type="checkbox" id="b-utskick" checked></label>
               </div>
             </div>
 
@@ -828,7 +828,7 @@ button{font:inherit;color:inherit}
       });
     },{rootMargin:'-45% 0px -50% 0px'});
     ['priser','hur','om-oss','fragor','kontakt','boka'].forEach(function(id){var el=$(id);if(el)io.observe(el)});
-    var io2=new IntersectionObserver(function(en){bokaVisible=en[0].isIntersecting;onScroll()},{threshold:.15});
+    var io2=new IntersectionObserver(function(en){bokaVisible=en[0].isIntersecting;onScroll()},{threshold:0});
     io2.observe(boka);
   }
   onScroll();
@@ -962,7 +962,7 @@ button{font:inherit;color:inherit}
       if(!nm.value.trim())return invalid(nm,'Fyll i ditt namn.');
       if(tel.value.replace(/\D/g,'').length<7)return invalid(tel,'Fyll i ett telefonnummer så vi kan ringa och boka.');
       if(!/^\S+@\S+\.\S+$/.test(ml.value.trim()))return invalid(ml,'Fyll i en e-postadress som fungerar.');
-      if(!$('b-ok').checked){err.textContent='Kryssa i rutan så att vi får kontakta dig.';err.hidden=false;$('b-ok').focus();return false}
+      if(!$('b-ok').checked){err.textContent='Kryssa i att vi får kontakta dig, annars kan vi inte boka en tid.';err.hidden=false;$('b-ok').focus();return false}
     }
     return true;
   }
@@ -983,7 +983,7 @@ button{font:inherit;color:inherit}
       'Önskad tid':tid+(d?', helst '+d:''),
       'Meddelande':$('b-msg').value.trim()||'–',
       'Namn':$('b-namn').value.trim(),'Telefon':$('b-tel').value.trim(),'E-post':$('b-mail').value.trim(),
-      'Påminnelser och erbjudanden via mejl och sms':$('b-nej').checked?'NEJ, kunden har tackat nej':'Ja (kunden har inte tackat nej)'
+      'Påminnelser och erbjudanden via mejl och sms':$('b-utskick').checked?'Ja':'NEJ, kunden har tackat nej'
     };
   }
   function send(subject,data,replyTo,bot){
