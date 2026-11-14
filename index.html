@@ -580,7 +580,7 @@ button{font:inherit;color:inherit}
               <p class="note" id="rut-note">För RUT-avdraget behöver vi ditt personnummer. Det frågar vi efter när vi bekräftar bokningen, inte här.</p>
               <div style="display:grid;gap:12px">
                 <label class="consent"><input type="checkbox" id="b-ok" required><span>Jag godkänner att Fenstro använder uppgifterna för att kontakta mig om bokningen. <a href="integritet.html" style="color:#BFD6E8">Så hanterar vi uppgifterna</a></span></label>
-                <label class="consent"><input type="checkbox" id="b-utskick"><span>Ni får gärna skicka påminnelser och erbjudanden till mig via mejl och sms. <small style="opacity:.8">(valfritt, du kan säga nej när du vill)</small></span></label>
+                <p style="font-size:13px;color:#BFD6E8;margin:0">Som kund kan du få påminnelser och erbjudanden om fönsterputs från oss via mejl och sms. Du kan säga nej när du vill. <label style="display:inline-flex;gap:8px;align-items:center;margin-top:6px;cursor:pointer"><input type="checkbox" id="b-nej" style="width:16px;height:16px;accent-color:#5FA8D3">Nej tack, skicka inga utskick till mig</label></p>
               </div>
             </div>
 
@@ -742,7 +742,6 @@ button{font:inherit;color:inherit}
         <div class="inp"><label for="a-namn">Namn</label><input id="a-namn" autocomplete="name" required></div>
         <div class="inp"><label for="a-kontakt">Telefon eller e-post</label><input id="a-kontakt" autocomplete="email" required></div>
         <div class="inp"><label for="a-msg">Din fråga</label><textarea id="a-msg" required></textarea></div>
-        <label class="consent"><input type="checkbox" id="a-utskick"><span>Ni får gärna skicka påminnelser och erbjudanden till mig via mejl och sms. <small style="opacity:.8">(valfritt)</small></span></label>
         <p class="err" id="a-err" role="alert" hidden></p>
         <button class="btn btn--glas" type="submit" id="a-send">Skicka frågan</button>
         <p class="note" id="a-done" hidden role="status">Tack, vi har fått din fråga och hör av oss.</p>
@@ -984,7 +983,7 @@ button{font:inherit;color:inherit}
       'Önskad tid':tid+(d?', helst '+d:''),
       'Meddelande':$('b-msg').value.trim()||'–',
       'Namn':$('b-namn').value.trim(),'Telefon':$('b-tel').value.trim(),'E-post':$('b-mail').value.trim(),
-      'Får skicka erbjudanden via mejl och sms':$('b-utskick').checked?'JA':'Nej'
+      'Påminnelser och erbjudanden via mejl och sms':$('b-nej').checked?'NEJ, kunden har tackat nej':'Ja (kunden har inte tackat nej)'
     };
   }
   function send(subject,data,replyTo,bot){
@@ -1040,7 +1039,7 @@ button{font:inherit;color:inherit}
     if(!m.value.trim()){ae.textContent='Skriv din fråga.';ae.hidden=false;m.focus();return}
     var btn=$('a-send');btn.disabled=true;btn.textContent='Skickar…';
     var kv=k.value.trim();
-    send('Fråga från '+n.value.trim(),{'Namn':n.value.trim(),'Kontakt':kv,'Fråga':m.value.trim(),'Får skicka erbjudanden via mejl och sms':$('a-utskick').checked?'JA':'Nej'},/@/.test(kv)?kv:'',ask.botcheck.checked)
+    send('Fråga från '+n.value.trim(),{'Namn':n.value.trim(),'Kontakt':kv,'Fråga':m.value.trim()},/@/.test(kv)?kv:'',ask.botcheck.checked)
       .then(function(how){
         if(how===true)notify('Ny fråga','Någon har ställt en fråga via hemsidan. Se mejlen.');
         $('a-done').textContent=how==='mailto'?'Ditt mejlprogram öppnas med frågan ifylld. Tryck på skicka där.':'Tack, vi har fått din fråga och hör av oss.';
