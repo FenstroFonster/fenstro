@@ -33,352 +33,7 @@
   "sameAs": ["https://www.instagram.com/fenstro.fonster/"]
 }
 </script>
-<style>
-@font-face{
-  font-family:"Montserrat";
-  src:url("fonts/montserrat.woff2") format("woff2");
-  font-weight:100 900;font-style:normal;font-display:swap;
-}
-:root{
-  --ink:#0F2A4A;
-  --ink-2:#173a63;
-  --ink-3:#1e4675;
-  --glas:#5FA8D3;
-  --glas-d:#3a87b8;
-  --frost:#BFD6E8;
-  --is:#F3F6F9;
-  --skiffer:#5A6B7C;
-  --vit:#fff;
-  --linje:#D5DEE7;
-  --max:1180px;
-  --pad:clamp(20px,4vw,40px);
-  --ease:cubic-bezier(.2,.7,.2,1);
-}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
-body{
-  margin:0;font-family:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
-  font-size:17px;line-height:1.6;color:var(--ink);background:var(--vit);
-  text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;
-}
-img{display:block;max-width:100%;height:auto}
-a{color:inherit}
-h1,h2,h3{line-height:1.1;margin:0;font-weight:800;letter-spacing:-.025em}
-h1{font-size:clamp(42px,6.4vw,76px)}
-h2{font-size:clamp(30px,3.8vw,46px)}
-h3{font-size:20px;font-weight:700;letter-spacing:-.01em}
-p{margin:0}
-button{font:inherit;color:inherit}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-.lead{font-size:clamp(18px,1.6vw,20px);color:var(--skiffer);max-width:34em}
-:focus-visible{outline:3px solid var(--glas);outline-offset:3px;border-radius:6px}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-[hidden]{display:none!important}
-
-/* Knappar */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
-  font-weight:700;font-size:16px;text-decoration:none;cursor:pointer;
-  padding:15px 26px;border-radius:999px;border:2px solid var(--ink);
-  background:var(--ink);color:var(--vit);transition:background .15s,color .15s,border-color .15s,transform .15s;
-}
-.btn:hover{background:var(--ink-2);border-color:var(--ink-2)}
-.btn:active{transform:translateY(1px)}
-.btn--ghost{background:transparent;color:var(--ink)}
-.btn--ghost:hover{background:var(--ink);color:var(--vit)}
-.btn--glas{background:var(--glas);border-color:var(--glas);color:var(--ink)}
-.btn--glas:hover{background:var(--frost);border-color:var(--frost)}
-.btn--line{background:transparent;color:var(--vit);border-color:rgba(191,214,232,.4)}
-.btn--line:hover{background:rgba(191,214,232,.12);border-color:var(--frost)}
-.btn[disabled]{opacity:.55;cursor:wait}
-
-/* Sidhuvud */
-.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:saturate(1.6) blur(14px);-webkit-backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid transparent;transition:border-color .2s}
-.top.is-scrolled{border-bottom-color:var(--linje)}
-.top__in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
-.top__logo img{height:40px;width:auto}
-.nav{display:flex;align-items:center;gap:6px}
-.nav a:not(.btn){text-decoration:none;font-weight:600;font-size:15px;padding:8px 14px;border-radius:999px;transition:background .15s,color .15s}
-.nav a:not(.btn):hover{background:var(--is)}
-.nav a[aria-current="true"]{background:var(--is);color:var(--glas-d)}
-.nav .btn{padding:11px 20px;font-size:15px;margin-left:10px}
-.menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--ink)}
-.menu-btn svg{display:block}
-@media (max-width:1060px){
-  .menu-btn{display:block}
-  .nav{position:fixed;inset:76px 0 auto 0;flex-direction:column;align-items:stretch;gap:0;background:var(--vit);padding:8px var(--pad) 24px;border-bottom:1px solid var(--linje);box-shadow:0 24px 40px rgba(15,42,74,.12);display:none}
-  .nav.is-open{display:flex}
-  .nav a:not(.btn){padding:15px 4px;border-bottom:1px solid var(--is);font-size:17px;border-radius:0}
-  .nav a[aria-current="true"],.nav a:not(.btn):hover{background:none}
-  .nav .btn{margin:16px 0 0;padding:15px}
-}
-
-/* Hero */
-.hero{padding:clamp(28px,5vw,64px) 0 clamp(56px,8vw,104px)}
-.hero__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:center}
-.hero h1{max-width:9.5em}
-.hero .lead{margin-top:24px}
-.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-.hero__facts{display:flex;flex-wrap:wrap;gap:10px;margin:40px 0 0;padding:0;list-style:none}
-.hero__facts li{display:inline-flex;gap:8px;align-items:center;font-size:14px;font-weight:600;padding:8px 14px 8px 10px;border-radius:999px;background:var(--is)}
-
-.shot{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;background:var(--frost);box-shadow:0 40px 80px -30px rgba(15,42,74,.45)}
-.shot img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
-.shot__haze{
-  position:absolute;inset:0;z-index:2;background:rgba(226,234,242,.5);
-  backdrop-filter:blur(8px) saturate(.5) brightness(1.08);-webkit-backdrop-filter:blur(8px) saturate(.5) brightness(1.08);
-}
-.shot__blade{position:absolute;z-index:3;top:-5%;bottom:-5%;left:-8%;width:6%;
-  background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.95) 45%,var(--frost) 60%,rgba(191,214,232,0));opacity:0}
-.is-wiping .shot__haze{animation:wipe 1.6s var(--ease) .45s forwards}
-.is-wiping .shot__blade{animation:blade 1.6s var(--ease) .45s forwards}
-@keyframes wipe{from{clip-path:inset(0 0 0 0)}to{clip-path:inset(0 0 0 100%)}}
-@keyframes blade{0%{opacity:1;left:-8%}90%{opacity:1}100%{opacity:0;left:102%}}
-.shot__card{
-  position:absolute;z-index:4;left:16px;right:16px;bottom:16px;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  padding:16px 18px;border-radius:18px;color:var(--ink);
-  background:rgba(255,255,255,.78);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);
-  border:1px solid rgba(255,255,255,.7);
-}
-.shot__card b{display:block;font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
-.shot__card span{font-size:13px;font-weight:600;color:var(--skiffer)}
-.shot__card .btn{padding:11px 18px;font-size:14px;flex:none}
-@media (max-width:920px){
-  .hero__grid{grid-template-columns:1fr}
-  .shot{aspect-ratio:5/5;max-width:560px}
-}
-@media (max-width:420px){.shot__card .btn{display:none}}
-
-/* Sektioner */
-.sec{padding:clamp(64px,9vw,120px) 0}
-.sec--is{background:var(--is)}
-.sec--ink{background:var(--ink);color:var(--vit)}
-.sec__head{max-width:640px;margin-bottom:clamp(36px,5vw,56px)}
-.sec__head .lead{margin-top:16px}
-.sec--ink .lead{color:var(--frost)}
-
-/* Varför välja oss */
-.why{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,6vw,96px);align-items:start}
-.why__head{position:sticky;top:110px}
-.why__head h2{font-size:clamp(36px,5vw,60px)}
-.why__head .lead{margin-top:20px}
-.why__end{margin-top:28px;font-size:20px;font-weight:700;line-height:1.4;max-width:18em}
-.why__end span{display:block;color:var(--skiffer);font-weight:600;font-size:17px;margin-top:6px}
-.why__head .btn{margin-top:28px}
-.why__list{list-style:none;margin:0;padding:0}
-.why__list li{padding:30px 0;border-top:1px solid var(--linje)}
-.why__list li:last-child{border-bottom:1px solid var(--linje)}
-.why__q{font-size:clamp(22px,2.4vw,28px);font-weight:800;letter-spacing:-.02em;line-height:1.2}
-.why__a{color:var(--skiffer);margin-top:10px;max-width:34em}
-@media (max-width:860px){.why{grid-template-columns:1fr}.why__head{position:static}}
-
-/* Priser */
-.tabs{display:inline-flex;background:var(--vit);border:1px solid var(--linje);border-radius:999px;padding:5px;margin-bottom:32px}
-.tabs button{font-weight:700;font-size:15px;border:0;background:none;color:var(--skiffer);padding:11px 24px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
-.tabs button[aria-selected="true"]{background:var(--ink);color:var(--vit)}
-.prices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.price{background:var(--vit);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;border:1px solid var(--linje)}
-.price h3{margin-bottom:6px}
-.price__desc{color:var(--skiffer);font-size:15px;min-height:3.2em}
-.price__amount{margin:24px 0 4px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
-.price__amount strong{font-size:48px;font-weight:800;letter-spacing:-.035em;line-height:1;white-space:nowrap}
-.price__amount span{font-weight:600;color:var(--skiffer)}
-.price__before{font-size:14px;color:var(--skiffer)}
-.price ul{list-style:none;margin:24px 0 0;padding:20px 0 0;border-top:1px solid var(--linje);display:grid;gap:10px;font-size:15px}
-.price li{display:flex;justify-content:space-between;gap:12px}
-.price li span:last-child{font-weight:700;white-space:nowrap}
-.price__foot{margin-top:auto;padding-top:28px}
-.price--abo{background:var(--ink);color:var(--vit);border-color:var(--ink);position:relative}
-.price--abo .price__desc,.price--abo .price__before,.price--abo .price__amount span{color:var(--frost)}
-.price--abo ul{border-top-color:rgba(191,214,232,.25)}
-.price__badge{position:absolute;top:-13px;left:28px;background:var(--glas);color:var(--ink);font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px}
-.months{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:22px}
-.months span{text-align:center;font-size:13px;font-weight:700;padding:8px 0;border-radius:8px;background:rgba(95,168,211,.18);color:var(--frost)}
-.price__note{font-size:14px;color:var(--skiffer);margin-top:28px;max-width:60em}
-.biz{background:var(--vit);border-radius:20px;border:1px solid var(--linje);overflow:hidden}
-.biz table{width:100%;border-collapse:collapse;font-size:16px}
-.biz th,.biz td{text-align:left;padding:20px 28px;border-bottom:1px solid var(--linje)}
-.biz th{font-size:14px;color:var(--skiffer);font-weight:600;background:var(--is)}
-.biz td:not(:first-child),.biz th:not(:first-child){text-align:right;white-space:nowrap}
-.biz tr:last-child td{border-bottom:0}
-.biz__foot{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;margin-top:24px}
-@media (max-width:980px){.prices{grid-template-columns:1fr;max-width:560px}.price__desc{min-height:0}}
-@media (max-width:560px){.biz th,.biz td{padding:16px}}
-
-/* Bokning */
-.book{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:start}
-.steps{display:flex;gap:8px;margin:0 0 22px;padding:0;list-style:none}
-.steps li{flex:1;display:flex;flex-direction:column;gap:10px;font-size:14px;font-weight:600;color:var(--frost)}
-.steps li::before{content:"";height:4px;border-radius:4px;background:rgba(191,214,232,.22);transition:background .3s}
-.steps li.is-done::before,.steps li.is-now::before{background:var(--glas)}
-.steps li.is-now{color:var(--vit)}
-.steps b{font-weight:700}
-.panel{background:var(--ink-2);border-radius:22px;padding:clamp(22px,3vw,36px)}
-.panel__body{display:grid;gap:28px}
-.panel__nav{display:flex;justify-content:space-between;gap:12px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(191,214,232,.15)}
-.panel__nav .btn{min-width:140px}
-.step-enter{animation:stepIn .35s var(--ease)}
-@keyframes stepIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
-.field-label{display:block;font-weight:700;margin-bottom:12px}
-.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.seg--2{grid-template-columns:repeat(2,1fr)}
-.seg input{position:absolute;opacity:0;pointer-events:none}
-.seg label{display:block;text-align:center;padding:13px 8px;border-radius:12px;border:2px solid rgba(191,214,232,.25);cursor:pointer;font-weight:600;font-size:15px;line-height:1.3;transition:border-color .15s,background .15s}
-.seg label:hover{border-color:rgba(191,214,232,.5)}
-.seg label small{display:block;font-weight:500;font-size:12px;color:var(--frost);margin-top:2px}
-.seg input:checked+label{border-color:var(--glas);background:rgba(95,168,211,.16)}
-.seg input:focus-visible+label{outline:3px solid var(--glas);outline-offset:3px}
-.count{display:flex;align-items:center;gap:16px}
-.count input[type=range]{flex:1;accent-color:var(--glas);height:28px;min-width:0}
-.stepper{display:inline-flex;align-items:center;border:2px solid rgba(191,214,232,.25);border-radius:12px;overflow:hidden;flex:none}
-.stepper button{width:42px;height:44px;border:0;background:none;color:var(--vit);font-size:20px;font-weight:600;cursor:pointer}
-.stepper button:hover{background:rgba(95,168,211,.2)}
-.stepper input{width:54px;height:44px;border:0;background:none;color:var(--vit);font:inherit;font-weight:700;font-size:17px;text-align:center;-moz-appearance:textfield}
-.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
-.meter{margin-top:16px}
-.meter__bar{position:relative;height:10px;border-radius:999px;background:rgba(191,214,232,.18);overflow:hidden;display:flex}
-.meter__in{height:100%;background:var(--frost);transition:width .3s var(--ease)}
-.meter__ex{height:100%;background:var(--glas);transition:width .3s var(--ease)}
-.meter__txt{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--frost);margin-top:10px}
-.meter__txt b{color:var(--vit);font-weight:700}
-.toggles{display:grid;gap:12px}
-.check{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border-radius:12px;border:2px solid rgba(191,214,232,.25);cursor:pointer}
-.check:has(input:checked){border-color:var(--glas);background:rgba(95,168,211,.1)}
-.check span{font-weight:600}
-.check small{display:block;font-weight:500;color:var(--frost);font-size:13px}
-.check input{width:22px;height:22px;accent-color:var(--glas);cursor:pointer;flex:none}
-.note{font-size:14px;color:var(--frost);background:rgba(95,168,211,.12);border-radius:12px;padding:12px 14px}
-
-.inputs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.inputs .full{grid-column:1/-1}
-.inp label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
-.inp label small{font-weight:500;color:var(--frost)}
-.inp input,.inp select,.inp textarea{
-  width:100%;font:inherit;font-size:16px;color:var(--vit);background:rgba(255,255,255,.06);
-  border:2px solid rgba(191,214,232,.22);border-radius:12px;padding:13px 14px;transition:border-color .15s,background .15s
-}
-.inp select option{color:var(--ink)}
-.inp input::placeholder,.inp textarea::placeholder{color:rgba(191,214,232,.55)}
-.inp input:focus,.inp select:focus,.inp textarea:focus{outline:none;border-color:var(--glas);background:rgba(255,255,255,.1)}
-.inp textarea{min-height:96px;resize:vertical}
-.inp input[aria-invalid="true"]{border-color:#f0a3a3}
-.inp input[type=date]{color-scheme:dark}
-.err{color:#ffc2c2;font-size:14px;font-weight:600}
-.consent{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--frost)}
-.consent input{width:20px;height:20px;margin-top:2px;accent-color:var(--glas);flex:none}
-
-.sum{background:var(--vit);color:var(--ink);border-radius:22px;padding:clamp(22px,3vw,34px);position:sticky;top:96px}
-.sum h3{font-size:16px;color:var(--skiffer);font-weight:600}
-.big{font-size:clamp(54px,6vw,74px);font-weight:800;letter-spacing:-.045em;line-height:1;margin:10px 0 6px;font-variant-numeric:tabular-nums}
-.big small{font-size:.36em;letter-spacing:0;font-weight:700;margin-left:6px}
-.sum__sub{color:var(--skiffer);font-size:15px}
-.rows{list-style:none;margin:22px 0 0;padding:18px 0 0;border-top:1px solid var(--linje);display:grid;gap:9px;font-size:15px}
-.rows li{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
-.rows li.tot{font-weight:700;padding-top:9px;border-top:1px dashed var(--linje)}
-.rows li.rut{color:var(--glas-d);font-weight:600}
-.sum__fine{font-size:13px;color:var(--skiffer);margin-top:18px}
-.promo{margin-top:18px;padding-top:16px;border-top:1px solid var(--linje)}
-.promo__open{background:none;border:0;padding:0;font-weight:700;font-size:14px;color:var(--glas-d);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
-.promo__row{display:flex;gap:8px;margin-top:10px}
-.promo__row input{flex:1;min-width:0;font:inherit;font-size:15px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);background:var(--is);border:2px solid transparent;border-radius:12px;padding:11px 14px}
-.promo__row input:focus{outline:none;border-color:var(--glas);background:var(--vit)}
-.promo__row .btn{padding:11px 18px;font-size:14px}
-.promo__msg{font-size:14px;font-weight:600;margin-top:10px}
-.promo__msg.ok{color:#1f7a4d}.promo__msg.no{color:#b3261e}
-.promo__tag{display:inline-flex;align-items:center;gap:10px;margin-top:10px;padding:8px 8px 8px 14px;border-radius:999px;background:#e5f3ea;color:#1f5f3d;font-size:14px;font-weight:700}
-.promo__tag button{border:0;background:rgba(31,95,61,.12);color:#1f5f3d;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:15px;line-height:1}
-.rows li.disc{color:#1f7a4d;font-weight:600}
-.done{text-align:center;padding:clamp(24px,4vw,48px) 8px}
-.done__icon{width:72px;height:72px;margin:0 auto 22px;border-radius:50%;background:var(--glas);display:grid;place-items:center}
-.done__icon svg{stroke-dasharray:40;stroke-dashoffset:40;animation:draw .5s .15s var(--ease) forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-.done h3{font-size:28px;font-weight:800;letter-spacing:-.02em}
-.done p{color:var(--frost);margin:12px auto 0;max-width:30em}
-.done .btn{margin-top:28px}
-@media (max-width:920px){.book{grid-template-columns:1fr}.sum{position:static;order:-1}}
-@media (max-width:520px){.seg{grid-template-columns:1fr}.seg--2{grid-template-columns:1fr 1fr}.inputs{grid-template-columns:1fr}.steps li span{display:none}}
-
-/* Så räknar vi */
-.count-how{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,80px);align-items:center}
-.rules{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:18px}
-.rules li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
-.rules b{display:block}
-.rules span{color:var(--skiffer);font-size:15px}
-.diagram{background:var(--is);border-radius:22px;padding:clamp(20px,3vw,36px);margin:0}
-.diagram svg{width:100%;height:auto}
-.diagram figcaption{font-size:14px;color:var(--skiffer);margin-top:16px;text-align:center}
-@media (max-width:860px){.count-how{grid-template-columns:1fr}}
-
-/* Bilder */
-.gallery{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:auto auto;gap:12px}
-.gallery figure{margin:0;border-radius:16px;overflow:hidden;background:var(--frost)}
-.gallery figure:first-child{grid-row:span 2}
-.gallery img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5}
-.gallery figure:first-child img{aspect-ratio:auto}
-@media (max-width:860px){.gallery{grid-template-columns:1fr 1fr}.gallery figure:first-child{grid-row:auto;grid-column:span 2}.gallery figure:first-child img{aspect-ratio:4/3}}
-
-/* Om oss */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px)}
-.areas{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0;padding:0;list-style:none}
-.areas li{padding:10px 18px;border-radius:999px;background:var(--vit);border:1px solid var(--linje);font-weight:600;font-size:15px}
-.areas li.home{background:var(--ink);color:var(--vit);border-color:var(--ink)}
-.two .lead{margin-top:18px}
-.two p+p{margin-top:16px}
-@media (max-width:860px){.two{grid-template-columns:1fr}}
-
-/* Omdömen */
-.reviews{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px}
-.reviews h2{max-width:14em}
-.reviews .lead{margin-top:14px}
-.stars{display:flex;gap:4px;margin-bottom:16px}
-
-/* FAQ */
-.faq{max-width:820px}
-.faq details{border-bottom:1px solid var(--linje)}
-.faq summary{list-style:none;cursor:pointer;padding:24px 48px 24px 0;font-weight:700;font-size:18px;position:relative}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;margin-top:-10px;border-right:3px solid var(--glas);border-bottom:3px solid var(--glas);transform:rotate(45deg);transition:transform .2s}
-.faq details[open] summary::after{transform:rotate(-135deg);margin-top:-2px}
-.faq details p{padding:0 0 24px;color:var(--skiffer);max-width:44em}
-
-/* Kontakt */
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px)}
-.channels{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:12px}
-.channels a{display:flex;align-items:center;gap:16px;text-decoration:none;padding:16px 18px;border-radius:14px;border:1px solid var(--linje);background:var(--vit);transition:border-color .15s}
-.channels a:hover{border-color:var(--glas)}
-.channels svg{flex:none}
-.channels b{display:block;font-size:16px}
-.channels span{font-size:14px;color:var(--skiffer)}
-.ask{background:var(--ink);color:var(--vit);border-radius:22px;padding:clamp(24px,3vw,36px);display:grid;gap:16px;align-content:start}
-.ask h3{font-size:22px}
-.ask p.sub{color:var(--frost);font-size:15px;margin-top:-6px}
-@media (max-width:860px){.contact{grid-template-columns:1fr}}
-
-/* Sidfot */
-.foot{background:#0b2240;color:var(--frost);padding:56px 0 40px;font-size:14px}
-.foot__in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px}
-.foot img{height:36px;width:auto;margin-bottom:16px}
-.foot a{color:var(--vit);text-decoration:none}
-.foot a:hover{text-decoration:underline}
-.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;align-content:start}
-.foot__bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(191,214,232,.15)}
-
-/* Mobil bokningsrad */
-.dock{position:fixed;z-index:40;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));display:none;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 18px;border-radius:999px;background:var(--ink);color:var(--vit);box-shadow:0 16px 40px rgba(15,42,74,.35);transform:translateY(140%);transition:transform .3s var(--ease)}
-.dock.is-on{transform:none}
-.dock b{display:block;font-size:15px;line-height:1.2}
-.dock span{font-size:12px;color:var(--frost)}
-.dock .btn{padding:11px 18px;font-size:14px}
-@media (max-width:920px){.dock{display:flex}.foot{padding-bottom:110px}}
-
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .shot__haze,.shot__blade{display:none}
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .done__icon svg{stroke-dashoffset:0}
-}
-</style>
+<link rel="stylesheet" href="css/style.css?v=2">
 </head>
 <body>
 
@@ -405,25 +60,44 @@ button{font:inherit;color:inherit}
     <div class="wrap hero__grid">
       <div>
         <h1>Rena fönster till fast pris.</h1>
-        <p class="lead">Vi putsar fönster hos villor och företag i Vellinge, Malmö, Trelleborg och Svedala. Du ser priset direkt här på sidan, och det blir inte dyrare på plats.</p>
+        <p class="lead">Vi är tre gymnasieelever från Vellinge som driver eget fönsterputsföretag. Vi putsar hos villor och företag i Vellinge, Malmö, Trelleborg och Svedala, och priset du ser här är det du betalar.</p>
         <div class="hero__cta">
           <a href="#boka" class="btn">Räkna ut pris och boka</a>
           <a href="#priser" class="btn btn--ghost">Se priser</a>
         </div>
         <ul class="hero__facts">
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#5FA8D3"/><path d="M5.2 9.3l2.4 2.4 5-5.2" stroke="#0F2A4A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Lokala ungdomar</li>
           <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#5FA8D3"/><path d="M5.2 9.3l2.4 2.4 5-5.2" stroke="#0F2A4A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Ingen resekostnad</li>
-          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#5FA8D3"/><path d="M5.2 9.3l2.4 2.4 5-5.2" stroke="#0F2A4A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Inga startavgifter</li>
           <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#5FA8D3"/><path d="M5.2 9.3l2.4 2.4 5-5.2" stroke="#0F2A4A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Fönsterbleck ingår</li>
           <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="9" fill="#5FA8D3"/><path d="M5.2 9.3l2.4 2.4 5-5.2" stroke="#0F2A4A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>RUT-avdrag</li>
         </ul>
       </div>
       <div class="shot" id="shot">
-        <img src="img/team.jpg" alt="Två från Fenstro putsar ett fönster med skrapa på skaft" width="1141" height="1400" fetchpriority="high">
-        <div class="shot__haze" aria-hidden="true"></div>
-        <div class="shot__blade" aria-hidden="true"></div>
+        <img src="img/team-1100.webp" srcset="img/team-640.webp 640w, img/team-1100.webp 1100w" sizes="(max-width:920px) 92vw, 560px" alt="Två från Fenstro putsar ett fönster med skrapa på skaft" width="1100" height="1350" fetchpriority="high" decoding="async">
         <div class="shot__card">
           <div><b>från 250 kr</b><span>upp till 20 fönster, efter RUT</span></div>
           <a href="#boka" class="btn">Boka</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clean" id="skillnad" aria-labelledby="skillnad-rubrik">
+    <div class="clean__track">
+      <div class="clean__stage">
+        <div class="wrap clean__grid">
+          <div class="clean__text">
+            <h2 id="skillnad-rubrik">Skrolla, så putsar vi.</h2>
+            <p class="lead">Smuts, pollen och vattenfläckar bort. Kvar blir glas du ser rakt igenom.</p>
+            <p class="clean__pct" aria-hidden="true"><span id="clean-pct">0</span> % rent</p>
+          </div>
+          <div class="clean__frame" id="clean-frame">
+            <img class="clean__ren" src="img/skillnad-ren.webp" alt="Nyputsat fönster där träd och blå himmel speglas i glaset" width="1100" height="1393" loading="lazy" decoding="async">
+            <img class="clean__smuts" src="img/skillnad-smutsig.webp" alt="" width="1100" height="1393" loading="lazy" decoding="async">
+            <div class="clean__blade" aria-hidden="true"></div>
+            <span class="clean__tag clean__tag--efter" aria-hidden="true">Efter</span>
+            <span class="clean__tag clean__tag--fore" aria-hidden="true">Före</span>
+          </div>
         </div>
       </div>
     </div>
@@ -433,14 +107,18 @@ button{font:inherit;color:inherit}
     <div class="wrap why">
       <div class="why__head">
         <h2 id="varfor-rubrik">Varför välja oss?</h2>
-        <p class="lead">Du kan anlita vem som helst för att putsa dina fönster. Så varför just oss?</p>
-        <p class="why__end">Rena fönster. Fast pris. Folk från trakten.<span>Behöver du fler skäl?</span></p>
+        <p class="lead">Du kan anlita ett stort städbolag. Eller tre drivna gymnasieelever från Vellinge som vill visa vad de går för.</p>
+        <p class="why__end">Rena fönster. Fast pris. Unga från trakten.<span>Behöver du fler skäl?</span></p>
         <a href="#boka" class="btn">Räkna ut ditt pris</a>
       </div>
       <ul class="why__list">
         <li>
           <p class="why__q">Vad kostar det? Det vet du redan.</p>
           <p class="why__a">Priset står här på sidan och ändras inte när vi kommer. Ingen resekostnad, ingen startavgift och inga överraskningar på fakturan.</p>
+        </li>
+        <li>
+          <p class="why__q">Varför anlita gymnasieelever?</p>
+          <p class="why__a">För att vi har allt att bevisa. Vi driver ett riktigt företag vid sidan av skolan, och varje nöjd kund betyder mer för oss än för ett stort bolag.</p>
         </li>
         <li>
           <p class="why__q">Varför betala för något du inte får?</p>
@@ -451,8 +129,8 @@ button{font:inherit;color:inherit}
           <p class="why__a">Inte en okänd underleverantör. Det är vi tre som äger Fenstro, och det är vi som putsar dina fönster. Varje gång.</p>
         </li>
         <li>
-          <p class="why__q">Bor vi långt bort? Nej, vi bor här.</p>
-          <p class="why__a">Vi kommer från Vellinge och putsar i trakten. Vi är dina grannar, och vi vill att du ska rekommendera oss till dina.</p>
+          <p class="why__q">Långt bort? Nej, vi bor här.</p>
+          <p class="why__a">Vi är lokala ungdomar från Vellinge och putsar i trakten. Vi är dina grannar, och vi vill att du ska rekommendera oss till dina.</p>
         </li>
         <li>
           <p class="why__q">Måste du vara hemma? Inte för utsidan.</p>
@@ -763,11 +441,11 @@ button{font:inherit;color:inherit}
     <div class="wrap">
       <div class="sec__head"><h2 id="bilder-rubrik">Från jobben</h2></div>
       <div class="gallery">
-        <figure><img src="img/putsning.jpg" alt="Fönster putsas med mikrofiberduk och skrapa" loading="lazy" width="871" height="1400"></figure>
-        <figure><img src="img/rent-glas.jpg" alt="Nyputsat fönster där träd och himmel speglas i glaset" loading="lazy" width="1105" height="1400"></figure>
-        <figure><img src="img/fonster-vitt.jpg" alt="Vitt tvåluftsfönster med blå himmel i rutorna" loading="lazy" width="995" height="1400"></figure>
-        <figure><img src="img/fonster-vagg.jpg" alt="Nyputsat fönster i vit putsfasad" loading="lazy" width="1030" height="1358"></figure>
-        <figure><img src="img/team.jpg" alt="Två från Fenstro putsar fönster tillsammans" loading="lazy" width="1141" height="1400" style="object-position:50% 35%"></figure>
+        <figure><img src="img/putsning-640.webp" srcset="img/putsning-640.webp 640w, img/putsning-1100.webp 1100w" sizes="(max-width:860px) 50vw, 33vw" alt="Fönster putsas med mikrofiberduk och skrapa" loading="lazy" decoding="async" width="871" height="1400"></figure>
+        <figure><img src="img/rent-glas-640.webp" srcset="img/rent-glas-640.webp 640w, img/rent-glas-1100.webp 1100w" sizes="(max-width:860px) 50vw, 33vw" alt="Nyputsat fönster där träd och himmel speglas i glaset" loading="lazy" decoding="async" width="1105" height="1400"></figure>
+        <figure><img src="img/fonster-vitt-640.webp" srcset="img/fonster-vitt-640.webp 640w, img/fonster-vitt-1100.webp 1100w" sizes="(max-width:860px) 50vw, 33vw" alt="Vitt tvåluftsfönster med blå himmel i rutorna" loading="lazy" decoding="async" width="995" height="1400"></figure>
+        <figure><img src="img/fonster-vagg-640.webp" srcset="img/fonster-vagg-640.webp 640w, img/fonster-vagg-1100.webp 1100w" sizes="(max-width:860px) 50vw, 33vw" alt="Nyputsat fönster i vit putsfasad" loading="lazy" decoding="async" width="1030" height="1358"></figure>
+        <figure><img src="img/team-640.webp" srcset="img/team-640.webp 640w, img/team-1100.webp 1100w" sizes="(max-width:860px) 50vw, 33vw" alt="Två från Fenstro putsar fönster tillsammans" loading="lazy" decoding="async" width="1141" height="1400" style="object-position:50% 35%"></figure>
       </div>
     </div>
   </section>
@@ -776,8 +454,9 @@ button{font:inherit;color:inherit}
     <div class="wrap two">
       <div>
         <h2 id="om-rubrik">Om oss</h2>
-        <p class="lead">Vi är tre unga killar från Vellinge som startade Fenstro hösten 2026.</p>
-        <p style="margin-top:18px">Vi ville driva något eget tillsammans, och fönsterputs är ett jobb där man ser resultatet direkt. Vi går fortfarande i skolan, så vi putsar mest på helger och lov.</p>
+        <p class="lead">Vi är tre gymnasieelever från Vellinge som startade Fenstro hösten 2026.</p>
+        <p style="margin-top:18px">Vi ville inte bara prata om att starta något eget, vi ville göra det. Så vi registrerade ett handelsbolag, köpte utrustning och började putsa. Fönsterputs är ett jobb där man ser resultatet direkt, och det gillar vi.</p>
+        <p>Eftersom vi går i skolan putsar vi mest på helger och lov.</p>
         <p>Vi har ingen lokal, inga anställda och inga andra stora kostnader. Därför kan vi hålla priset lågt och ändå göra ett ordentligt jobb.</p>
         <p>Vi förstår om man tvekar lite inför att anlita några unga killar. Därför har vi ett fast pris som inte ändras på plats, och vi hör alltid av oss innan vi kommer. Är du inte nöjd med något, säg till direkt.</p>
         <p>Fenstro Handelsbolag är registrerat hos Bolagsverket.</p>
@@ -888,321 +567,6 @@ button{font:inherit;color:inherit}
   <a href="#boka" class="btn btn--glas" tabindex="-1">Boka putsning</a>
 </div>
 
-<script>
-(function(){
-  /* ===== Inställningar =====
-     WEB3FORMS_KEY: nyckeln från web3forms.com. När den är ifylld skickas
-     bokningar och frågor direkt till er e-post. Tom = mejlprogrammet öppnas i stället. */
-  var WEB3FORMS_KEY = '2c956179-d823-4c5a-9310-2a028e02b6e3';
-  var MAIL = 'fenstrofonster@gmail.com';
-  /* NTFY_TOPIC: kanalen i appen ntfy. Alla som prenumererar på den får en
-     pushnotis när någon bokar eller frågar. Notisen innehåller inga personuppgifter. */
-  /* CF_ANALYTICS_TOKEN: token från Cloudflare Web Analytics. Besöksstatistik utan cookies. */
-  var CF_ANALYTICS_TOKEN = 'd2bf71420edd49898d72905a657209fa';
-  if(CF_ANALYTICS_TOKEN){var cf=document.createElement('script');cf.defer=true;cf.src='https://static.cloudflareinsights.com/beacon.min.js';cf.setAttribute('data-cf-beacon',JSON.stringify({token:CF_ANALYTICS_TOKEN}));document.body.appendChild(cf)}
-  var NTFY_TOPIC = 'fenstro-ddd9891c7f64';
-
-  var $ = function(id){return document.getElementById(id)};
-  var kr = function(n){return Math.round(n).toLocaleString('sv-SE')};
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* Sidhuvud, meny, mobilrad */
-  var top=$('top'),dock=$('dock'),hero=document.querySelector('.hero'),boka=$('boka');
-  var bokaVisible=false;
-  function onScroll(){
-    top.classList.toggle('is-scrolled',window.scrollY>8);
-    var pastHero=hero.getBoundingClientRect().bottom<0;
-    dock.classList.toggle('is-on',pastHero&&!bokaVisible);
-  }
-  window.addEventListener('scroll',onScroll,{passive:true});
-  var mb=document.querySelector('.menu-btn'),nav=$('nav');
-  mb.addEventListener('click',function(){
-    var open=nav.classList.toggle('is-open');
-    mb.setAttribute('aria-expanded',open);mb.setAttribute('aria-label',open?'Stäng menyn':'Öppna menyn');
-  });
-  nav.addEventListener('click',function(e){if(e.target.closest('a')){nav.classList.remove('is-open');mb.setAttribute('aria-expanded','false')}});
-
-  /* Markera aktuell sektion i menyn */
-  var links={};
-  nav.querySelectorAll('a[href^="#"]:not(.btn)').forEach(function(a){links[a.getAttribute('href').slice(1)]=a});
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if(en.target.id==='boka'){bokaVisible=en.isIntersecting;onScroll();}
-        var a=links[en.target.id];
-        if(en.target.id==='boka'&&en.isIntersecting)Object.keys(links).forEach(function(k){links[k].removeAttribute('aria-current')});
-        if(a&&en.isIntersecting){
-          Object.keys(links).forEach(function(k){links[k].removeAttribute('aria-current')});
-          a.setAttribute('aria-current','true');
-        }
-      });
-    },{rootMargin:'-45% 0px -50% 0px'});
-    ['varfor','priser','hur','om-oss','fragor','kontakt','boka'].forEach(function(id){var el=$(id);if(el)io.observe(el)});
-    var io2=new IntersectionObserver(function(en){bokaVisible=en[0].isIntersecting;onScroll()},{threshold:0});
-    io2.observe(boka);
-  }
-  onScroll();
-
-  /* Skrapan torkar rent bilden */
-  var shot=$('shot'),heroImg=shot.querySelector('img');
-  var wipe=function(){requestAnimationFrame(function(){shot.classList.add('is-wiping')})};
-  if(heroImg.complete)wipe();else{heroImg.addEventListener('load',wipe);heroImg.addEventListener('error',wipe)}
-
-  /* Flikar privat/företag */
-  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
-  function selectTab(t){
-    tabs.forEach(function(x){
-      var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;
-      $(x.getAttribute('aria-controls')).hidden=!on;
-    });
-  }
-  tabs.forEach(function(t,i){
-    t.addEventListener('click',function(){selectTab(t)});
-    t.addEventListener('keydown',function(e){
-      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var n=tabs[(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];selectTab(n);n.focus()}
-    });
-  });
-
-  /* ===== Priser =====
-     Alla belopp är före RUT. För privatpersoner halverar RUT-avdraget priset. */
-  var PRIVAT={
-    ut:  {namn:'Utvändigt, en gång',          bas:500, extra:18, over:100, gang:1},
-    inut:{namn:'In- och utvändigt, en gång',  bas:1000,extra:30, over:200, gang:1},
-    abo: {namn:'Fräscha Fönster, abonnemang', bas:400, extra:10, over:75,  gang:4}
-  };
-  var FORETAG={
-    ut:  {namn:'Utvändigt, företag',          bas:500, over:150},
-    inut:{namn:'In- och utvändigt, företag',  bas:1000,over:250}
-  };
-  var INGAR=20,SPROJS=10;
-  /* Kampanjkoder. Bara hashade, så koderna går inte att läsa i sidans kod. */
-  var PROMO={"a65cb420b3971bfed2fc90edc24cd0d684845e30852dc7f6d2e9c6bf130bf22b": 10, "471e3b22b82ac60f9ae67a328af022a0f341ffe47f634494ad6091ad45497ee5": 25, "e4729e5f17a8effb416e9b06e60513e55f408548172fcf5c17f81610ad5726fc": 50};
-  var promo=null;
-
-  var range=$('antal-range'),num=$('antal'),over=$('over'),sOn=$('sprojs-on'),sRow=$('sprojs-row'),sNum=$('sprojs');
-  var bigEl=$('sum-big'),shown=250,state={};
-  function clamp(v,a,b){v=parseInt(v,10);if(isNaN(v))v=a;return Math.max(a,Math.min(b,v))}
-  function tween(to){
-    if(reduce){bigEl.textContent=kr(to);shown=to;return}
-    var from=shown,t0=performance.now(),d=380;shown=to;
-    (function step(t){var p=Math.min(1,(t-t0)/d),e=1-Math.pow(1-p,3);bigEl.textContent=kr(from+(to-from)*e);if(p<1)requestAnimationFrame(step)})(t0);
-  }
-  function val(name){return document.querySelector('input[name='+name+']:checked').value}
-
-  function calc(){
-    var kund=val('kund'),t=val('tjanst');
-    var abo=$('t-abo');
-    abo.disabled=kund==='foretag';abo.nextElementSibling.style.display=kund==='foretag'?'none':'';
-    $('tjanst-seg').style.gridTemplateColumns=kund==='foretag'?'repeat(2,1fr)':'';
-    if(kund==='foretag'&&t==='abo'){$('t-ut').checked=true;t='ut'}
-
-    var n=clamp(num.value,1,200),s=sOn.checked?clamp(sNum.value,0,n):0;
-    if(document.activeElement!==num&&String(n)!==num.value)num.value=n;
-    range.value=Math.min(n,60);
-    var extraN=Math.max(0,n-INGAR),rows=[],big,sub,title;
-
-    if(kund==='privat'){
-      var p=PRIVAT[t],extra=extraN*p.extra,ov=over.checked?p.over:0,sp=s*SPROJS;
-      var full=p.bas+extra+ov+sp,disc=promo?Math.round(full*promo.pct/100):0,gang=full-disc,rut=Math.floor(gang/2),efter=gang-rut;
-      rows.push(['Grundpris, upp till '+INGAR+' fönster',kr(p.bas)+' kr']);
-      if(extraN)rows.push([extraN+' extra fönster × '+p.extra+' kr',kr(extra)+' kr']);
-      if(ov)rows.push(['Övervåning',kr(ov)+' kr']);
-      if(sp)rows.push(['Spröjs, '+s+' × '+SPROJS+' kr',kr(sp)+' kr']);
-      if(disc)rows.push(['Kampanjkod −'+promo.pct+' %','−'+kr(disc)+' kr','disc']);
-      rows.push(['Före RUT'+(p.gang>1?', per gång':''),kr(gang)+' kr','tot']);
-      rows.push(['RUT-avdrag (50 %)','−'+kr(rut)+' kr','rut']);
-      if(p.gang>1)rows.push(['Per år, 4 gånger efter RUT',kr(efter*4)+' kr','tot']);
-      big=efter;sub=p.gang>1?'per gång efter RUT-avdrag':'efter RUT-avdrag';title=p.namn;
-      state={disc:disc,kund:'Privatperson',tjanst:p.namn,pris:kr(efter)+' kr efter RUT'+(p.gang>1?' per gång ('+kr(efter*4)+' kr/år)':''),fore:kr(gang)+' kr'};
-    }else{
-      var f=FORETAG[t],ovf=over.checked?f.over:0,spf=s*SPROJS,fullf=f.bas+ovf+spf,discf=promo?Math.round(fullf*promo.pct/100):0,tot=fullf-discf;
-      rows.push(['Grundpris, upp till '+INGAR+' fönster',kr(f.bas)+' kr']);
-      if(ovf)rows.push(['Övervåning',kr(ovf)+' kr']);
-      if(spf)rows.push(['Spröjs, '+s+' × '+SPROJS+' kr',kr(spf)+' kr']);
-      if(discf)rows.push(['Kampanjkod −'+promo.pct+' %','−'+kr(discf)+' kr','disc']);
-      rows.push(['Totalt, ingen moms tillkommer',kr(tot)+' kr','tot']);
-      big=tot;sub=extraN?'plus extra fönster, vi bekräftar priset':'totalpris, ingen moms tillkommer';title=f.namn;
-      state={disc:discf,kund:'Företag',tjanst:f.namn,pris:kr(tot)+' kr'+(extraN?' + '+extraN+' extra fönster (pris bekräftas)':''),fore:''};
-    }
-    $('biz-note').hidden=!(kund==='foretag'&&extraN>0);
-    $('rut-note').hidden=kund!=='privat';
-    var biz=kund==='foretag';
-    $('b-namn-label').textContent=biz?'Kontaktperson':'Namn';
-    $('biz-fields').hidden=!biz;
-    $('b-adress-label').textContent=biz?'Adress till lokalen':'Gatuadress';
-    document.querySelectorAll('label[data-f]').forEach(function(l){l.innerHTML=biz?l.dataset.f:l.dataset.p});
-
-    $('sum-rows').innerHTML=rows.map(function(r){return '<li'+(r[2]?' class="'+r[2]+'"':'')+'><span>'+r[0]+'</span><span>'+r[1]+'</span></li>'}).join('');
-    $('sum-title').textContent=title;$('sum-sub').textContent=sub;
-    if(big!==shown)tween(big);
-
-    var scale=Math.max(INGAR*1.5,n),inN=Math.min(n,INGAR);
-    $('m-in').style.width=(inN/scale*100)+'%';
-    $('m-ex').style.width=(extraN/scale*100)+'%';
-    $('m-left').innerHTML='<b>'+inN+' av '+INGAR+'</b> ingår';
-    $('m-right').innerHTML=extraN?'<b>+'+extraN+' extra</b>':'';
-    state.n=n;state.over=over.checked;state.s=s;
-  }
-  range.addEventListener('input',function(){num.value=range.value;calc()});
-  num.addEventListener('input',calc);
-  num.addEventListener('blur',function(){num.value=clamp(num.value,1,200);calc()});
-  sNum.addEventListener('input',calc);
-  sNum.addEventListener('blur',function(){sNum.value=clamp(sNum.value,0,clamp(num.value,1,200));calc()});
-  document.querySelectorAll('[data-step-n]').forEach(function(b){b.addEventListener('click',function(){num.value=clamp(+num.value+ +b.dataset.stepN,1,200);calc()})});
-  document.querySelectorAll('[data-step-s]').forEach(function(b){b.addEventListener('click',function(){sNum.value=clamp(+sNum.value+ +b.dataset.stepS,0,clamp(num.value,1,200));calc()})});
-  document.querySelectorAll('input[name=tjanst],input[name=kund]').forEach(function(r){r.addEventListener('change',calc)});
-  over.addEventListener('change',calc);
-  sOn.addEventListener('change',function(){sRow.hidden=!sOn.checked;if(sOn.checked&&+sNum.value===0)sNum.value=Math.min(clamp(num.value,1,200),INGAR);calc()});
-  document.querySelectorAll('[data-pick]').forEach(function(a){a.addEventListener('click',function(){
-    $('k-privat').checked=true;$('t-'+a.dataset.pick).checked=true;goStep(1);calc();
-  })});
-  document.querySelectorAll('[data-kund=foretag]').forEach(function(a){a.addEventListener('click',function(){$('k-foretag').checked=true;if(a.dataset.pickB)$('t-'+a.dataset.pickB).checked=true;goStep(1);calc()})});
-  calc();
-
-  /* ===== Kampanjkod ===== */
-  var pOpen=$('promo-open'),pBox=$('promo-box'),pIn=$('promo-in'),pMsg=$('promo-msg'),pOn=$('promo-on');
-  function sha(txt){return crypto.subtle.digest('SHA-256',new TextEncoder().encode(txt)).then(function(b){return [].map.call(new Uint8Array(b),function(x){return ('0'+x.toString(16)).slice(-2)}).join('')})}
-  pOpen.addEventListener('click',function(){pBox.hidden=false;pOpen.hidden=true;pOpen.setAttribute('aria-expanded','true');pIn.focus()});
-  function tryCode(){
-    var code=pIn.value.trim().toUpperCase().replace(/\s+/g,'');
-    if(!code){pIn.focus();return}
-    if(!window.crypto||!crypto.subtle){pMsg.hidden=false;pMsg.className='promo__msg no';pMsg.textContent='Koden kan inte kontrolleras i den här webbläsaren. Skriv den i meddelandet i steg 2.';return}
-    sha('fenstro:'+code).then(function(h){
-      var pct=PROMO[h];pMsg.hidden=false;
-      if(pct){
-        promo={code:code,pct:pct};pBox.hidden=true;pOn.hidden=false;
-        $('promo-label').textContent=code+'  −'+pct+' %';
-        pMsg.hidden=true;calc();
-      }else{pMsg.className='promo__msg no';pMsg.textContent='Koden fungerar inte. Kolla stavningen.'}
-    });
-  }
-  $('promo-go').addEventListener('click',tryCode);
-  pIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();tryCode()}});
-  $('promo-x').addEventListener('click',function(){promo=null;pOn.hidden=true;pBox.hidden=false;pIn.value='';calc();pIn.focus()});
-
-  /* ===== Bokning i tre steg ===== */
-  var form=$('booking'),step=1,bodies=form.querySelectorAll('[data-step]'),stepsEl=$('steps').children;
-  var back=$('b-back'),next=$('b-next'),err=$('b-err');
-  function goStep(s,focus){
-    step=s;
-    bodies.forEach(function(b){var on=+b.dataset.step===s;b.hidden=!on;if(on&&!reduce){b.classList.remove('step-enter');void b.offsetWidth;b.classList.add('step-enter')}});
-    [].forEach.call(stepsEl,function(li,i){li.classList.toggle('is-now',i+1===s);li.classList.toggle('is-done',i+1<s);if(i+1===s)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current')});
-    back.hidden=s===1;next.textContent=s===3?'Skicka bokningsförfrågan':'Fortsätt';
-    err.hidden=true;
-    if(focus){var first=form.querySelector('[data-step="'+s+'"] input:not([type=hidden]),[data-step="'+s+'"] select');if(first)first.focus({preventScroll:true})}
-  }
-  function invalid(el,msg){el.setAttribute('aria-invalid','true');el.focus();err.textContent=msg;err.hidden=false;return false}
-  function check(s){
-    form.querySelectorAll('[aria-invalid]').forEach(function(e){e.removeAttribute('aria-invalid')});
-    if(s===2){var a=$('b-adress');if(!a.value.trim())return invalid(a,'Fyll i adressen där vi ska putsa.')}
-    if(s===3){
-      var nm=$('b-namn'),tel=$('b-tel'),ml=$('b-mail');
-      if(val('kund')==='foretag'){
-        var ftg=$('b-ftg'),org=$('b-orgnr');
-        if(!ftg.value.trim())return invalid(ftg,'Fyll i företagets namn.');
-        if(org.value.replace(/\D/g,'').length!==10)return invalid(org,'Fyll i org.nr med 10 siffror, t.ex. 556677-8899.');
-      }
-      if(!nm.value.trim())return invalid(nm,val('kund')==='foretag'?'Fyll i namn på kontaktperson.':'Fyll i ditt namn.');
-      if(tel.value.replace(/\D/g,'').length<7)return invalid(tel,'Fyll i ett telefonnummer så vi kan ringa och boka.');
-      if(!/^\S+@\S+\.\S+$/.test(ml.value.trim()))return invalid(ml,'Fyll i en e-postadress som fungerar.');
-      if(!$('b-ok').checked){err.textContent='Kryssa i att vi får kontakta dig, annars kan vi inte boka en tid.';err.hidden=false;$('b-ok').focus();return false}
-    }
-    return true;
-  }
-  next.addEventListener('click',function(){
-    if(!check(step))return;
-    if(step<3){goStep(step+1,true);scrollIntoViewIfNeeded()}else{sendBooking()}
-  });
-  back.addEventListener('click',function(){goStep(step-1,true)});
-  function scrollIntoViewIfNeeded(){var r=form.getBoundingClientRect();if(r.top<70)window.scrollTo({top:window.scrollY+r.top-110,behavior:reduce?'auto':'smooth'})}
-
-  function bookingData(){
-    var d=$('b-datum').value,tid=val('tid');
-    if(val('kund')==='foretag')tid={'Helg':'Före öppning','Vardag efter kl. 16':'Efter stängning'}[tid]||tid;
-    var biz=val('kund')==='foretag',extra={};
-    if(biz){
-      extra={'Företag':$('b-ftg').value.trim(),'Org.nr':$('b-orgnr').value.trim(),
-        'Referens':$('b-ref').value.trim()||'–','Faktura till':$('b-fmail').value.trim()||$('b-mail').value.trim()};
-    }
-    var base={
-      'Kund':state.kund,'Tjänst':state.tjanst,'Antal fönster':String(state.n),
-      'Övervåning':state.over?'Ja':'Nej','Spröjs':state.s?state.s+' fönster':'Nej',
-      'Pris':state.pris,'Före RUT':state.fore||'–',
-      'Kampanjkod':promo?promo.code+' (−'+promo.pct+' %, −'+kr(state.disc)+' kr)':'–',
-      'Adress':$('b-adress').value.trim()+', '+$('b-ort').value,
-      'Önskad tid':tid+(d?', helst '+d:''),
-      'Meddelande':$('b-msg').value.trim()||'–',
-      'Namn':$('b-namn').value.trim(),'Telefon':$('b-tel').value.trim(),'E-post':$('b-mail').value.trim(),
-      'Erbjudanden via mejl och sms':$('b-utskick').checked?'Ja':'NEJ, kunden har tackat nej'
-    };
-    if(biz){delete base['Före RUT'];base['Namn']=$('b-namn').value.trim()+' (kontaktperson)';Object.keys(extra).forEach(function(k){base[k]=extra[k]})}
-    return base;
-  }
-  function send(subject,data,replyTo,bot){
-    if(bot)return Promise.resolve(true);
-    if(!WEB3FORMS_KEY){
-      var body=Object.keys(data).map(function(k){return k+': '+data[k]}).join('\n');
-      window.location.href='mailto:'+MAIL+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
-      return Promise.resolve('mailto');
-    }
-    var payload={access_key:WEB3FORMS_KEY,subject:subject,from_name:'Fenstro hemsida'};
-    if(replyTo)payload.replyto=replyTo;
-    Object.keys(data).forEach(function(k){payload[k]=data[k]});
-    return fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)})
-      .then(function(r){return r.json()}).then(function(j){if(!j.success)throw new Error(j.message||'fel');return true});
-  }
-  function notify(title,msg){
-    if(!NTFY_TOPIC)return;
-    try{fetch('https://ntfy.sh/'+NTFY_TOPIC,{method:'POST',body:msg,headers:{'Title':title,'Tags':'window','Priority':'high'}}).catch(function(){})}catch(e){}
-  }
-  function sendBooking(){
-    var data=bookingData();
-    next.disabled=true;next.textContent='Skickar…';
-    send('Bokning: '+(data['Företag']?data['Företag']+', ':'')+data['Tjänst']+' i '+$('b-ort').value,data,data['E-post'],form.botcheck.checked)
-      .then(function(how){
-        if(how===true)notify('Ny bokning',data['Tjänst']+', '+$('b-ort').value+', '+state.n+' fönster. Pris: '+data['Pris']+'. Se mejlen.');
-        bodies.forEach(function(b){b.hidden=true});
-        $('panel-nav').hidden=true;err.hidden=true;
-        $('b-done-text').textContent=how==='mailto'
-          ?'Ditt mejlprogram öppnas med bokningen ifylld. Tryck på skicka där. Öppnades inget? Mejla oss på '+MAIL+'.'
-          :'Tack '+data['Namn'].split(' ')[0]+'! Vi ringer eller skickar sms till '+data['Telefon']+' för att bekräfta en tid.';
-        if(how==='mailto')$('b-done').querySelector('h3').textContent='Nästan klart';
-        $('b-done').hidden=false;$('b-done').focus({preventScroll:true});
-        [].forEach.call(stepsEl,function(li){li.classList.add('is-done');li.classList.remove('is-now')});
-      })
-      .catch(function(){
-        err.textContent='Det gick inte att skicka just nu. Försök igen, eller mejla oss på '+MAIL+'.';err.hidden=false;
-      })
-      .then(function(){next.disabled=false;next.textContent='Skicka bokningsförfrågan'});
-  }
-  $('b-again').addEventListener('click',function(){
-    form.reset();$('b-done').hidden=true;$('panel-nav').hidden=false;$('b-done').querySelector('h3').textContent='Förfrågan skickad';
-    sRow.hidden=true;goStep(1,true);calc();
-  });
-
-  /* ===== Fråga ===== */
-  var ask=$('ask');
-  ask.addEventListener('submit',function(e){
-    e.preventDefault();
-    var n=$('a-namn'),k=$('a-kontakt'),m=$('a-msg'),ae=$('a-err');
-    ae.hidden=true;
-    if(!n.value.trim()){ae.textContent='Fyll i ditt namn.';ae.hidden=false;n.focus();return}
-    if(!k.value.trim()){ae.textContent='Fyll i telefon eller e-post så vi kan svara.';ae.hidden=false;k.focus();return}
-    if(!m.value.trim()){ae.textContent='Skriv din fråga.';ae.hidden=false;m.focus();return}
-    var btn=$('a-send');btn.disabled=true;btn.textContent='Skickar…';
-    var kv=k.value.trim();
-    send('Fråga från '+n.value.trim(),{'Namn':n.value.trim(),'Kontakt':kv,'Fråga':m.value.trim()},/@/.test(kv)?kv:'',ask.botcheck.checked)
-      .then(function(how){
-        if(how===true)notify('Ny fråga','Någon har ställt en fråga via hemsidan. Se mejlen.');
-        $('a-done').textContent=how==='mailto'?'Ditt mejlprogram öppnas med frågan ifylld. Tryck på skicka där.':'Tack, vi har fått din fråga och hör av oss.';
-        $('a-done').hidden=false;if(how!=='mailto')ask.reset();
-      })
-      .catch(function(){ae.textContent='Det gick inte att skicka just nu. Mejla oss på '+MAIL+'.';ae.hidden=false})
-      .then(function(){btn.disabled=false;btn.textContent='Skicka frågan'});
-  });
-
-  $('year').textContent=new Date().getFullYear();
-})();
-</script>
+<script src="js/main.js?v=2" defer></script>
 </body>
 </html>
