@@ -464,22 +464,51 @@ button{font:inherit;color:inherit}
       </div>
 
       <div id="panel-foretag" role="tabpanel" aria-labelledby="tab-foretag" hidden>
-        <div class="biz">
-          <table>
-            <caption class="sr">Priser för företag</caption>
-            <thead><tr><th scope="col">Tjänst</th><th scope="col">Grundpris</th><th scope="col">Övervåning</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Utvändigt</strong></td><td>500 kr</td><td>+150 kr</td></tr>
-              <tr><td><strong>In- och utvändigt</strong></td><td>1 000 kr</td><td>+250 kr</td></tr>
-              <tr><td>Spröjs, per fönster</td><td>+10 kr</td><td>–</td></tr>
-              <tr><td>Fönsterbleck</td><td>Ingår</td><td>–</td></tr>
-            </tbody>
-          </table>
+        <div class="prices">
+          <article class="price">
+            <h3>Utvändigt</h3>
+            <p class="price__desc">Vi putsar utsidan på er butik, restaurang eller kontor.</p>
+            <p class="price__amount"><strong>500 kr</strong><span>totalt</span></p>
+            <p class="price__before">Ingen moms tillkommer</p>
+            <ul>
+              <li><span>Övervåning</span><span>+150 kr</span></li>
+              <li><span>Spröjs, per fönster</span><span>+10 kr</span></li>
+              <li><span>Fönsterbleck</span><span>Ingår</span></li>
+              <li><span>Faktura</span><span>Ja</span></li>
+            </ul>
+            <div class="price__foot"><a href="#boka" class="btn btn--ghost" data-kund="foretag" data-pick-b="ut">Boka utvändigt</a></div>
+          </article>
+
+          <article class="price">
+            <h3>In- och utvändigt</h3>
+            <p class="price__desc">Både insida och utsida. Vi kan komma före öppning eller efter stängning.</p>
+            <p class="price__amount"><strong>1 000 kr</strong><span>totalt</span></p>
+            <p class="price__before">Ingen moms tillkommer</p>
+            <ul>
+              <li><span>Övervåning</span><span>+250 kr</span></li>
+              <li><span>Spröjs, per fönster</span><span>+10 kr</span></li>
+              <li><span>Fönsterbleck</span><span>Ingår</span></li>
+              <li><span>Faktura</span><span>Ja</span></li>
+            </ul>
+            <div class="price__foot"><a href="#boka" class="btn btn--ghost" data-kund="foretag" data-pick-b="inut">Boka in- och utvändigt</a></div>
+          </article>
+
+          <article class="price price--abo">
+            <span class="price__badge">Avtal</span>
+            <h3>Regelbunden putsning</h3>
+            <p class="price__desc">Vill ni ha rena fönster varje månad eller varje kvartal? Vi ger er ett eget pris.</p>
+            <p class="price__amount"><strong>Eget pris</strong></p>
+            <p class="price__before">Utifrån hur ofta och hur många fönster</p>
+            <ul>
+              <li><span>Ni väljer hur ofta</span><span>Ja</span></li>
+              <li><span>Vi hör av oss före varje gång</span><span>Ja</span></li>
+              <li><span>Startavgift</span><span>Ingen</span></li>
+              <li><span>Bindningstid</span><span>Ingen</span></li>
+            </ul>
+            <div class="price__foot"><a href="#kontakt" class="btn btn--glas">Be om pris</a></div>
+          </article>
         </div>
-        <div class="biz__foot">
-          <p class="price__note" style="margin:0">Fenstro är inte momsregistrerat, så ingen moms tillkommer. Priset du ser är det du betalar. Har ni många fönster eller vill ha putsning regelbundet ger vi gärna ett eget pris.</p>
-          <a href="#boka" class="btn" data-kund="foretag">Boka för företag</a>
-        </div>
+        <p class="price__note">Fenstro är inte momsregistrerat, så priset ni ser är det ni betalar. Vi skickar faktura till företaget efter jobbet.</p>
       </div>
     </div>
   </section>
@@ -553,7 +582,7 @@ button{font:inherit;color:inherit}
 
             <div class="panel__body" data-step="2" hidden>
               <div class="inputs">
-                <div class="inp full"><label for="b-adress">Gatuadress</label><input id="b-adress" autocomplete="street-address" required placeholder="T.ex. Storgatan 1"></div>
+                <div class="inp full"><label for="b-adress" id="b-adress-label">Gatuadress</label><input id="b-adress" autocomplete="street-address" required placeholder="T.ex. Storgatan 1"></div>
                 <div class="inp"><label for="b-ort">Ort</label>
                   <select id="b-ort">
                     <option>Vellinge</option><option>Höllviken</option><option>Skanör</option><option>Falsterbo</option><option>Ljunghusen</option><option>Malmö</option><option>Trelleborg</option><option>Svedala</option><option>Annan ort</option>
@@ -563,8 +592,8 @@ button{font:inherit;color:inherit}
               <fieldset style="border:0;margin:0;padding:0">
                 <legend class="field-label">När passar det bäst?</legend>
                 <div class="seg">
-                  <input type="radio" name="tid" id="tid-helg" value="Helg" checked><label for="tid-helg">Helg</label>
-                  <input type="radio" name="tid" id="tid-kvall" value="Vardag efter kl. 16"><label for="tid-kvall">Vardag<small>efter kl. 16</small></label>
+                  <input type="radio" name="tid" id="tid-helg" value="Helg" checked><label for="tid-helg" data-p="Helg" data-f="Före öppning">Helg</label>
+                  <input type="radio" name="tid" id="tid-kvall" value="Vardag efter kl. 16"><label for="tid-kvall" data-p="Vardag<small>efter kl. 16</small>" data-f="Efter stängning">Vardag<small>efter kl. 16</small></label>
                   <input type="radio" name="tid" id="tid-alla" value="Spelar ingen roll"><label for="tid-alla">Spelar ingen roll</label>
                 </div>
               </fieldset>
@@ -572,6 +601,12 @@ button{font:inherit;color:inherit}
             </div>
 
             <div class="panel__body" data-step="3" hidden>
+              <div class="inputs" id="biz-fields" hidden>
+                <div class="inp full"><label for="b-ftg">Företagsnamn</label><input id="b-ftg" autocomplete="organization"></div>
+                <div class="inp"><label for="b-orgnr">Org.nr</label><input id="b-orgnr" inputmode="numeric" placeholder="556677-8899"></div>
+                <div class="inp"><label for="b-ref">Er referens <small>(valfritt)</small></label><input id="b-ref" placeholder="T.ex. namn eller kostnadsställe"></div>
+                <div class="inp full"><label for="b-fmail">Fakturan skickas till <small>(om annan e-post än nedan)</small></label><input id="b-fmail" type="email" placeholder="faktura@foretaget.se"></div>
+              </div>
               <div class="inputs">
                 <div class="inp full"><label for="b-namn" id="b-namn-label">Namn</label><input id="b-namn" autocomplete="name" required></div>
                 <div class="inp"><label for="b-tel">Telefon</label><input id="b-tel" type="tel" autocomplete="tel" required></div>
@@ -914,7 +949,11 @@ button{font:inherit;color:inherit}
     }
     $('biz-note').hidden=!(kund==='foretag'&&extraN>0);
     $('rut-note').hidden=kund!=='privat';
-    $('b-namn-label').textContent=kund==='foretag'?'Namn och företag':'Namn';
+    var biz=kund==='foretag';
+    $('b-namn-label').textContent=biz?'Kontaktperson':'Namn';
+    $('biz-fields').hidden=!biz;
+    $('b-adress-label').textContent=biz?'Adress till lokalen':'Gatuadress';
+    document.querySelectorAll('label[data-f]').forEach(function(l){l.innerHTML=biz?l.dataset.f:l.dataset.p});
 
     $('sum-rows').innerHTML=rows.map(function(r){return '<li'+(r[2]?' class="'+r[2]+'"':'')+'><span>'+r[0]+'</span><span>'+r[1]+'</span></li>'}).join('');
     $('sum-title').textContent=title;$('sum-sub').textContent=sub;
@@ -940,7 +979,7 @@ button{font:inherit;color:inherit}
   document.querySelectorAll('[data-pick]').forEach(function(a){a.addEventListener('click',function(){
     $('k-privat').checked=true;$('t-'+a.dataset.pick).checked=true;goStep(1);calc();
   })});
-  document.querySelectorAll('[data-kund=foretag]').forEach(function(a){a.addEventListener('click',function(){$('k-foretag').checked=true;goStep(1);calc()})});
+  document.querySelectorAll('[data-kund=foretag]').forEach(function(a){a.addEventListener('click',function(){$('k-foretag').checked=true;if(a.dataset.pickB)$('t-'+a.dataset.pickB).checked=true;goStep(1);calc()})});
   calc();
 
   /* ===== Bokning i tre steg ===== */
@@ -960,7 +999,12 @@ button{font:inherit;color:inherit}
     if(s===2){var a=$('b-adress');if(!a.value.trim())return invalid(a,'Fyll i adressen där vi ska putsa.')}
     if(s===3){
       var nm=$('b-namn'),tel=$('b-tel'),ml=$('b-mail');
-      if(!nm.value.trim())return invalid(nm,'Fyll i ditt namn.');
+      if(val('kund')==='foretag'){
+        var ftg=$('b-ftg'),org=$('b-orgnr');
+        if(!ftg.value.trim())return invalid(ftg,'Fyll i företagets namn.');
+        if(org.value.replace(/\D/g,'').length!==10)return invalid(org,'Fyll i org.nr med 10 siffror, t.ex. 556677-8899.');
+      }
+      if(!nm.value.trim())return invalid(nm,val('kund')==='foretag'?'Fyll i namn på kontaktperson.':'Fyll i ditt namn.');
       if(tel.value.replace(/\D/g,'').length<7)return invalid(tel,'Fyll i ett telefonnummer så vi kan ringa och boka.');
       if(!/^\S+@\S+\.\S+$/.test(ml.value.trim()))return invalid(ml,'Fyll i en e-postadress som fungerar.');
       if(!$('b-ok').checked){err.textContent='Kryssa i att vi får kontakta dig, annars kan vi inte boka en tid.';err.hidden=false;$('b-ok').focus();return false}
@@ -976,7 +1020,13 @@ button{font:inherit;color:inherit}
 
   function bookingData(){
     var d=$('b-datum').value,tid=val('tid');
-    return {
+    if(val('kund')==='foretag')tid={'Helg':'Före öppning','Vardag efter kl. 16':'Efter stängning'}[tid]||tid;
+    var biz=val('kund')==='foretag',extra={};
+    if(biz){
+      extra={'Företag':$('b-ftg').value.trim(),'Org.nr':$('b-orgnr').value.trim(),
+        'Referens':$('b-ref').value.trim()||'–','Faktura till':$('b-fmail').value.trim()||$('b-mail').value.trim()};
+    }
+    var base={
       'Kund':state.kund,'Tjänst':state.tjanst,'Antal fönster':String(state.n),
       'Övervåning':state.over?'Ja':'Nej','Spröjs':state.s?state.s+' fönster':'Nej',
       'Pris':state.pris,'Före RUT':state.fore||'–',
@@ -986,6 +1036,8 @@ button{font:inherit;color:inherit}
       'Namn':$('b-namn').value.trim(),'Telefon':$('b-tel').value.trim(),'E-post':$('b-mail').value.trim(),
       'Erbjudanden via mejl och sms':$('b-utskick').checked?'Ja':'NEJ, kunden har tackat nej'
     };
+    if(biz){delete base['Före RUT'];base['Namn']=$('b-namn').value.trim()+' (kontaktperson)';Object.keys(extra).forEach(function(k){base[k]=extra[k]})}
+    return base;
   }
   function send(subject,data,replyTo,bot){
     if(bot)return Promise.resolve(true);
@@ -1007,7 +1059,7 @@ button{font:inherit;color:inherit}
   function sendBooking(){
     var data=bookingData();
     next.disabled=true;next.textContent='Skickar…';
-    send('Bokning: '+data['Tjänst']+' i '+$('b-ort').value,data,data['E-post'],form.botcheck.checked)
+    send('Bokning: '+(data['Företag']?data['Företag']+', ':'')+data['Tjänst']+' i '+$('b-ort').value,data,data['E-post'],form.botcheck.checked)
       .then(function(how){
         if(how===true)notify('Ny bokning',data['Tjänst']+', '+$('b-ort').value+', '+state.n+' fönster. Pris: '+data['Pris']+'. Se mejlen.');
         bodies.forEach(function(b){b.hidden=true});
