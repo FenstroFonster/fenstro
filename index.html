@@ -579,8 +579,8 @@ button{font:inherit;color:inherit}
               </div>
               <p class="note" id="rut-note">För RUT-avdraget behöver vi ditt personnummer. Det frågar vi efter när vi bekräftar bokningen, inte här.</p>
               <div class="toggles">
-                <label class="check"><span>Ni får kontakta mig om fönsterputsen<small>Vi ringer, sms:ar eller mejlar för att bekräfta tid och pris. <a href="integritet.html" style="color:#BFD6E8">Så hanterar vi uppgifterna</a></small></span><input type="checkbox" id="b-ok" required></label>
-                <label class="check"><span>Ni får skicka påminnelser och erbjudanden<small>Via mejl och sms, bara om fönsterputs. Kryssa ur om du inte vill ha några utskick.</small></span><input type="checkbox" id="b-utskick" checked></label>
+                <label class="check"><span>Ni får kontakta mig om fönsterputsen<small><a href="integritet.html" style="color:#BFD6E8">Så hanterar vi uppgifterna</a></small></span><input type="checkbox" id="b-ok" required></label>
+                <label class="check"><span>Ni får skicka erbjudanden via mejl och sms<small>Kryssa ur om du inte vill</small></span><input type="checkbox" id="b-utskick" checked></label>
               </div>
             </div>
 
@@ -983,7 +983,7 @@ button{font:inherit;color:inherit}
       'Önskad tid':tid+(d?', helst '+d:''),
       'Meddelande':$('b-msg').value.trim()||'–',
       'Namn':$('b-namn').value.trim(),'Telefon':$('b-tel').value.trim(),'E-post':$('b-mail').value.trim(),
-      'Påminnelser och erbjudanden via mejl och sms':$('b-utskick').checked?'Ja':'NEJ, kunden har tackat nej'
+      'Erbjudanden via mejl och sms':$('b-utskick').checked?'Ja':'NEJ, kunden har tackat nej'
     };
   }
   function send(subject,data,replyTo,bot){
