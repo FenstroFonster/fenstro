@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 8 120 120">
+<clipPath id="fclip"><rect x="0" y="8" width="60.0" height="60.0" /></clipPath>
+
+<rect x="4.8" y="12.8" width="110.4" height="110.4" rx="19.2" fill="#5FA8D3" clip-path="url(#fclip)" />
+
+<line x1="19.2" y1="51.199999999999996" x2="43.199999999999996" y2="27.2" stroke="#FFFFFF" stroke-width="5.3999999999999995" stroke-linecap="round" />
+
+<line x1="30.0" y1="56.0" x2="48.0" y2="38.0" stroke="#FFFFFF" stroke-width="3.0" stroke-linecap="round" />
+
+<rect x="56.1" y="12.8" width="7.800000000000001" height="110.4" fill="#0F2A4A" />
+
+<rect x="4.8" y="64.1" width="110.4" height="7.800000000000001" fill="#0F2A4A" />
+
+<rect x="4.8" y="12.8" width="110.4" height="110.4" rx="19.2" fill="none" stroke="#0F2A4A" stroke-width="9.6" />
+</svg>

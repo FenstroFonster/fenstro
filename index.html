@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fenstro Fönster – Fönsterputs i Vellinge, Malmö, Trelleborg och Svedala</title>
+<meta name="description" content="Fönsterputs för villor och företag i Vellinge med omnejd. Fast pris från 250 kr efter RUT, ingen resekostnad och inga andra tillägg. Abonnemang utan bindningstid.">
+<link rel="canonical" href="https://fenstrofonster.se/">
+<meta name="theme-color" content="#0F2A4A">
+<link rel="icon" href="img/ikon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sv_SE">
+<meta property="og:title" content="Fenstro Fönster – Fönsterputs i Vellinge med omnejd">
+<meta property="og:description" content="Fast pris från 250 kr efter RUT. Ingen resekostnad, inga tillägg.">
+<meta property="og:url" content="https://fenstrofonster.se/">
+<meta property="og:image" content="https://fenstrofonster.se/img/og.jpg">
+<link rel="preload" href="fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Fenstro Fönster",
+  "legalName": "Fenstro Handelsbolag",
+  "url": "https://fenstrofonster.se/",
+  "logo": "https://fenstrofonster.se/img/logo.svg",
+  "image": "https://fenstrofonster.se/img/og.jpg",
+  "email": "fenstrofonster@gmail.com",
+  "description": "Fönsterputs för privatpersoner och företag i Vellinge kommun, Malmö, Trelleborg och Svedala.",
+  "priceRange": "250–1000 kr",
+  "areaServed": ["Vellinge kommun", "Malmö", "Trelleborg", "Svedala"],
+  "address": {"@type": "PostalAddress", "addressLocality": "Vellinge", "addressCountry": "SE"},
+  "sameAs": ["https://www.instagram.com/fenstro.fonster/"]
+}
+</script>
+<style>
+@font-face{
+  font-family:"Montserrat";
+  src:url("fonts/montserrat.woff2") format("woff2");
+  font-weight:100 900;font-style:normal;font-display:swap;
+}
+:root{
+  --ink:#0F2A4A;
+  --ink-2:#163a63;
+  --glas:#5FA8D3;
+  --glas-d:#3f8dbd;
+  --frost:#BFD6E8;
+  --is:#F3F6F9;
+  --skiffer:#5A6B7C;
+  --vit:#fff;
+  --linje:#D5DEE7;
+  --r-frame:22px;
+  --r-pane:10px;
+  --max:1180px;
+  --pad:clamp(20px,4vw,40px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;font-family:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:17px;line-height:1.6;color:var(--ink);background:var(--vit);
+  font-feature-settings:"kern";text-rendering:optimizeLegibility;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{line-height:1.12;margin:0;font-weight:800;letter-spacing:-.02em}
+h1{font-size:clamp(40px,6.2vw,72px)}
+h2{font-size:clamp(30px,3.8vw,46px)}
+h3{font-size:21px;font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.lead{font-size:clamp(18px,1.6vw,20px);color:var(--skiffer);max-width:34em}
+:focus-visible{outline:3px solid var(--glas);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Knappar */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font:inherit;font-weight:700;font-size:16px;text-decoration:none;cursor:pointer;
+  padding:15px 24px;border-radius:999px;border:2px solid var(--ink);
+  background:var(--ink);color:var(--vit);transition:background .15s,color .15s,border-color .15s;
+}
+.btn:hover{background:var(--ink-2);border-color:var(--ink-2)}
+.btn--ghost{background:transparent;color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:var(--vit)}
+.btn--glas{background:var(--glas);border-color:var(--glas);color:var(--ink)}
+.btn--glas:hover{background:var(--frost);border-color:var(--frost)}
+
+/* Sidhuvud */
+.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.top.is-scrolled{border-bottom-color:var(--linje)}
+.top__in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
+.top__logo img{height:40px;width:auto}
+.nav{display:flex;align-items:center;gap:30px}
+.nav a{text-decoration:none;font-weight:600;font-size:15px}
+.nav a:not(.btn):hover{color:var(--glas-d)}
+.nav .btn{padding:11px 20px;font-size:15px}
+.menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--ink)}
+.menu-btn svg{display:block}
+@media (max-width:900px){
+  .menu-btn{display:block}
+  .nav{position:fixed;inset:76px 0 auto 0;flex-direction:column;align-items:stretch;gap:0;background:var(--vit);padding:8px var(--pad) 24px;border-bottom:1px solid var(--linje);box-shadow:0 20px 40px rgba(15,42,74,.12);display:none}
+  .nav.is-open{display:flex}
+  .nav a:not(.btn){padding:14px 0;border-bottom:1px solid var(--is);font-size:17px}
+  .nav .btn{margin-top:16px;padding:15px}
+}
+
+/* Hero */
+.hero{padding:clamp(36px,6vw,80px) 0 clamp(56px,8vw,110px);overflow:hidden}
+.hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,72px);align-items:center}
+.hero h1{max-width:9.5em}
+.hero .lead{margin-top:22px}
+.hero__cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.hero__facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px;margin:44px 0 0;padding:0;list-style:none;max-width:520px}
+.hero__facts li{display:flex;gap:12px;align-items:flex-start;font-size:15px;font-weight:600;line-height:1.4}
+.hero__facts svg{flex:none;margin-top:1px}
+
+/* Fönstret i hero */
+.frame{
+  position:relative;aspect-ratio:4/5;border-radius:var(--r-frame);
+  border:clamp(10px,1.2vw,14px) solid var(--ink);background:var(--ink);overflow:hidden;
+  box-shadow:0 30px 60px -20px rgba(15,42,74,.35);
+}
+.frame img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.frame__bars::before,.frame__bars::after{content:"";position:absolute;background:var(--ink);z-index:3}
+.frame__bars::before{left:50%;top:0;bottom:0;width:clamp(8px,1vw,12px);transform:translateX(-50%)}
+.frame__bars::after{top:50%;left:0;right:0;height:clamp(8px,1vw,12px);transform:translateY(-50%)}
+.frame__glint{position:absolute;z-index:4;left:7%;top:6%;width:22%;height:22%;pointer-events:none}
+.frame__haze{
+  position:absolute;inset:0;z-index:2;
+  background:rgba(226,234,242,.55);
+  backdrop-filter:blur(7px) saturate(.6) brightness(1.08);-webkit-backdrop-filter:blur(7px) saturate(.6) brightness(1.08);
+  clip-path:inset(0 0 0 0);
+}
+.frame__blade{
+  position:absolute;z-index:5;top:-4%;bottom:-4%;left:-6%;width:5%;
+  background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.9) 40%,var(--frost) 60%,rgba(191,214,232,0));
+  opacity:0;
+}
+.is-wiping .frame__haze{animation:wipe 1.5s cubic-bezier(.6,.05,.25,1) .5s forwards}
+.is-wiping .frame__blade{animation:blade 1.5s cubic-bezier(.6,.05,.25,1) .5s forwards}
+@keyframes wipe{to{clip-path:inset(0 0 0 100%)}}
+@keyframes blade{0%{opacity:1;left:-6%}92%{opacity:1}100%{opacity:0;left:101%}}
+.frame__tag{
+  position:absolute;z-index:6;left:clamp(-20px,-2vw,-10px);bottom:9%;
+  background:var(--vit);color:var(--ink);border-radius:14px;padding:14px 18px;
+  box-shadow:0 14px 30px -10px rgba(15,42,74,.4);font-size:14px;line-height:1.35;font-weight:600;
+}
+.frame__tag b{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em}
+.hero__visual{position:relative;padding-left:clamp(0px,2vw,24px)}
+@media (max-width:900px){
+  .hero__grid{grid-template-columns:1fr}
+  .hero__visual{max-width:460px;margin:0 auto;width:100%;padding-left:0}
+  .frame__tag{left:12px}
+}
+@media (max-width:520px){.hero__facts{grid-template-columns:1fr}}
+
+/* Sektioner */
+.sec{padding:clamp(64px,9vw,120px) 0}
+.sec--is{background:var(--is)}
+.sec--ink{background:var(--ink);color:var(--vit)}
+.sec__head{max-width:640px;margin-bottom:clamp(36px,5vw,56px)}
+.sec__head .lead{margin-top:16px}
+.sec--ink .lead{color:var(--frost)}
+
+/* Priser */
+.tabs{display:inline-flex;background:var(--vit);border:1px solid var(--linje);border-radius:999px;padding:5px;margin-bottom:36px}
+.tabs button{font:inherit;font-weight:700;font-size:15px;border:0;background:none;color:var(--skiffer);padding:11px 24px;border-radius:999px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--vit)}
+.prices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.price{background:var(--vit);border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;border:1px solid var(--linje)}
+.price h3{margin-bottom:6px}
+.price__desc{color:var(--skiffer);font-size:15px;min-height:3.2em}
+.price__amount{margin:24px 0 4px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px}
+.price__amount strong{white-space:nowrap}
+.price__amount strong{font-size:48px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.price__amount span{font-weight:600;color:var(--skiffer)}
+.price__before{font-size:14px;color:var(--skiffer)}
+.price ul{list-style:none;margin:24px 0 0;padding:20px 0 0;border-top:1px solid var(--linje);display:grid;gap:10px;font-size:15px}
+.price li{display:flex;justify-content:space-between;gap:12px}
+.price li span:last-child{font-weight:700;white-space:nowrap}
+.price--abo{background:var(--ink);color:var(--vit);border-color:var(--ink);position:relative}
+.price--abo .price__desc,.price--abo .price__before,.price--abo .price__amount span{color:var(--frost)}
+.price--abo ul{border-top-color:rgba(191,214,232,.25)}
+.price__badge{position:absolute;top:-13px;left:28px;background:var(--glas);color:var(--ink);font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px}
+.months{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:22px}
+.months span{text-align:center;font-size:13px;font-weight:700;padding:8px 0;border-radius:8px;background:rgba(95,168,211,.18);color:var(--frost)}
+.price__foot{margin-top:auto;padding-top:28px}
+.price__note{font-size:14px;color:var(--skiffer);margin-top:28px;max-width:60em}
+.biz{background:var(--vit);border-radius:18px;border:1px solid var(--linje);overflow:hidden}
+.biz table{width:100%;border-collapse:collapse;font-size:16px}
+.biz th,.biz td{text-align:left;padding:20px 28px;border-bottom:1px solid var(--linje)}
+.biz th{font-size:14px;color:var(--skiffer);font-weight:600;background:var(--is)}
+.biz td:not(:first-child),.biz th:not(:first-child){text-align:right;white-space:nowrap}
+.biz td strong{font-weight:700}
+.biz tr:last-child td{border-bottom:0}
+.biz__foot{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;margin-top:24px}
+[hidden]{display:none!important}
+@media (max-width:980px){.prices{grid-template-columns:1fr;max-width:560px}.price__desc{min-height:0}}
+@media (max-width:560px){.biz th,.biz td{padding:16px}}
+
+/* Prisräknare */
+.calc{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
+.calc__form{background:var(--ink-2);border-radius:20px;padding:clamp(24px,3vw,36px);display:grid;gap:28px}
+.field-label{display:block;font-weight:700;margin-bottom:12px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{display:block;text-align:center;padding:13px 8px;border-radius:12px;border:2px solid rgba(191,214,232,.3);cursor:pointer;font-weight:600;font-size:15px;line-height:1.3;transition:border-color .15s,background .15s}
+.seg label small{display:block;font-weight:500;font-size:12px;color:var(--frost);margin-top:2px}
+.seg input:checked+label{border-color:var(--glas);background:rgba(95,168,211,.16)}
+.seg input:focus-visible+label{outline:3px solid var(--glas);outline-offset:3px}
+.count{display:flex;align-items:center;gap:16px}
+.count input[type=range]{flex:1;accent-color:var(--glas);height:28px}
+.stepper{display:flex;align-items:center;border:2px solid rgba(191,214,232,.3);border-radius:12px;overflow:hidden}
+.stepper button{width:40px;height:44px;border:0;background:none;color:var(--vit);font:inherit;font-size:20px;font-weight:600;cursor:pointer}
+.stepper button:hover{background:rgba(95,168,211,.2)}
+.stepper input{width:52px;height:44px;border:0;background:none;color:var(--vit);font:inherit;font-weight:700;font-size:17px;text-align:center;-moz-appearance:textfield}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.panes{display:flex;flex-wrap:wrap;gap:5px;margin-top:16px;min-height:22px}
+.panes i{width:16px;height:16px;border-radius:4px;border:2px solid var(--frost);display:block}
+.panes i.x{background:var(--glas);border-color:var(--glas)}
+.panes__key{display:flex;gap:18px;font-size:13px;color:var(--frost);margin-top:10px}
+.panes__key span{display:inline-flex;align-items:center;gap:6px}
+.panes__key i{width:12px;height:12px;border-radius:3px;border:2px solid var(--frost);display:inline-block}
+.panes__key i.x{background:var(--glas);border-color:var(--glas)}
+.toggles{display:grid;gap:14px}
+.check{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px;border-radius:12px;border:2px solid rgba(191,214,232,.3)}
+.check label{font-weight:600;cursor:pointer}
+.check small{display:block;font-weight:500;color:var(--frost);font-size:13px}
+.check input[type=checkbox]{width:22px;height:22px;accent-color:var(--glas);cursor:pointer;flex:none}
+.calc__out{background:var(--vit);color:var(--ink);border-radius:20px;padding:clamp(24px,3vw,36px);position:sticky;top:96px}
+.calc__out h3{font-size:17px;color:var(--skiffer);font-weight:600}
+.big{font-size:clamp(52px,6vw,72px);font-weight:800;letter-spacing:-.04em;line-height:1;margin:10px 0 6px;font-variant-numeric:tabular-nums}
+.big small{font-size:.38em;letter-spacing:0;font-weight:700;margin-left:6px}
+.calc__sub{color:var(--skiffer);font-size:15px}
+.rows{list-style:none;margin:24px 0;padding:20px 0 0;border-top:1px solid var(--linje);display:grid;gap:10px;font-size:15px}
+.rows li{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
+.rows li.sum{font-weight:700;padding-top:10px;border-top:1px dashed var(--linje)}
+.rows li.rut{color:var(--glas-d);font-weight:600}
+.calc__out .btn{width:100%}
+.calc__fine{font-size:13px;color:var(--skiffer);margin-top:14px}
+@media (max-width:900px){.calc{grid-template-columns:1fr}.calc__out{position:static}}
+@media (max-width:480px){.seg{grid-template-columns:1fr}}
+
+/* Så räknar vi */
+.count-how{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,80px);align-items:center}
+.rules{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:18px}
+.rules li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.rules b{display:block}
+.rules span{color:var(--skiffer);font-size:15px}
+.diagram{background:var(--is);border-radius:20px;padding:clamp(20px,3vw,36px)}
+.diagram svg{width:100%;height:auto}
+.diagram figcaption{font-size:14px;color:var(--skiffer);margin-top:16px;text-align:center}
+@media (max-width:860px){.count-how{grid-template-columns:1fr}}
+
+/* Bilder */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gallery figure{margin:0;border-radius:var(--r-pane);overflow:hidden;background:var(--frost);aspect-ratio:3/4}
+.gallery img{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){.gallery{grid-template-columns:repeat(2,1fr)}}
+
+/* Områden + om oss */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px)}
+.areas{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0;padding:0;list-style:none}
+.areas li{padding:10px 18px;border-radius:999px;background:var(--vit);border:1px solid var(--linje);font-weight:600;font-size:15px}
+.areas li.home{background:var(--ink);color:var(--vit);border-color:var(--ink)}
+.two p+p{margin-top:16px}
+.two .lead{margin-top:18px}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+
+/* Recensioner */
+.reviews{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 40px}
+.reviews h2{max-width:14em}
+.reviews .lead{margin-top:14px}
+.stars{display:flex;gap:4px;margin-bottom:16px}
+
+/* FAQ */
+.faq{max-width:820px}
+.faq details{border-bottom:1px solid var(--linje)}
+.faq summary{list-style:none;cursor:pointer;padding:24px 48px 24px 0;font-weight:700;font-size:18px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;margin-top:-10px;border-right:3px solid var(--glas);border-bottom:3px solid var(--glas);transform:rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(-135deg);margin-top:-2px}
+.faq details p{padding:0 0 24px;color:var(--skiffer);max-width:44em}
+
+/* Kontakt */
+.contact{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,6vw,80px)}
+.channels{list-style:none;margin:32px 0 0;padding:0;display:grid;gap:12px}
+.channels a{display:flex;align-items:center;gap:16px;text-decoration:none;padding:16px 18px;border-radius:14px;border:1px solid rgba(191,214,232,.25);transition:background .15s,border-color .15s}
+.channels a:hover{background:rgba(95,168,211,.12);border-color:var(--glas)}
+.channels svg{flex:none}
+.channels b{display:block;font-size:16px}
+.channels span{font-size:14px;color:var(--frost)}
+.form{background:var(--vit);color:var(--ink);border-radius:20px;padding:clamp(24px,3vw,40px);display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.form .full{grid-column:1/-1}
+.form label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
+.form input,.form select,.form textarea{
+  width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--is);
+  border:2px solid transparent;border-radius:12px;padding:13px 14px;transition:border-color .15s,background .15s
+}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--glas);background:var(--vit)}
+.form textarea{min-height:120px;resize:vertical}
+.form .btn{width:100%}
+.form__note{font-size:13px;color:var(--skiffer)}
+.form__ok{grid-column:1/-1;background:var(--is);border-radius:12px;padding:14px 16px;font-size:15px}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+@media (max-width:520px){.form{grid-template-columns:1fr}}
+
+/* Sidfot */
+.foot{background:#0b2240;color:var(--frost);padding:56px 0 40px;font-size:14px}
+.foot__in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px}
+.foot img{height:36px;width:auto;margin-bottom:16px}
+.foot a{color:var(--vit);text-decoration:none}
+.foot a:hover{text-decoration:underline}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.foot__bottom{margin-top:40px;padding-top:24px;border-top:1px solid rgba(191,214,232,.15)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .frame__haze,.frame__blade{display:none}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="top">
+  <div class="wrap top__in">
+    <a href="#" class="top__logo" aria-label="Fenstro Fönster, till början av sidan"><img src="img/logo.svg" alt="Fenstro Fönster" width="300" height="70"></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Öppna menyn">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 8h20M4 14h20M4 20h20"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="Huvudmeny">
+      <a href="#priser">Priser</a>
+      <a href="#raknare">Räkna ut pris</a>
+      <a href="#om-oss">Om oss</a>
+      <a href="#fragor">Frågor</a>
+      <a href="#kontakt" class="btn">Boka putsning</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <h1>Rena fönster till fast pris.</h1>
+        <p class="lead">Vi putsar fönster hos villor och företag i Vellinge, Malmö, Trelleborg och Svedala. Du vet priset innan vi kommer, och det blir inte dyrare på plats.</p>
+        <div class="hero__cta">
+          <a href="#raknare" class="btn">Räkna ut ditt pris</a>
+          <a href="#kontakt" class="btn btn--ghost">Skicka förfrågan</a>
+        </div>
+        <ul class="hero__facts">
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="1.5" y="1.5" width="19" height="19" rx="5" stroke="#5FA8D3" stroke-width="3"/><path d="M6.5 11.2l3 3 6-6.4" stroke="#0F2A4A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Ingen resekostnad</li>
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="1.5" y="1.5" width="19" height="19" rx="5" stroke="#5FA8D3" stroke-width="3"/><path d="M6.5 11.2l3 3 6-6.4" stroke="#0F2A4A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Inga startavgifter</li>
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="1.5" y="1.5" width="19" height="19" rx="5" stroke="#5FA8D3" stroke-width="3"/><path d="M6.5 11.2l3 3 6-6.4" stroke="#0F2A4A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Fönsterbleck ingår</li>
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="1.5" y="1.5" width="19" height="19" rx="5" stroke="#5FA8D3" stroke-width="3"/><path d="M6.5 11.2l3 3 6-6.4" stroke="#0F2A4A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>RUT-avdrag för privatpersoner</li>
+        </ul>
+      </div>
+      <div class="hero__visual">
+        <div class="frame" id="frame">
+          <img src="img/team.jpg" alt="Två från Fenstro putsar ett fönster med skrapa på skaft" width="1141" height="1400" fetchpriority="high">
+          <div class="frame__haze" aria-hidden="true"></div>
+          <div class="frame__blade" aria-hidden="true"></div>
+          <div class="frame__bars" aria-hidden="true"></div>
+          <svg class="frame__glint" viewBox="0 0 100 100" aria-hidden="true"><line x1="10" y1="62" x2="62" y2="10" stroke="#fff" stroke-width="9" stroke-linecap="round" opacity=".9"/><line x1="34" y1="72" x2="72" y2="34" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".9"/></svg>
+        </div>
+        <div class="frame__tag"><b>250 kr</b>upp till 20 fönster,<br>efter RUT-avdrag</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--is" id="priser" aria-labelledby="priser-rubrik">
+    <div class="wrap">
+      <div class="sec__head">
+        <h2 id="priser-rubrik">Priser</h2>
+        <p class="lead">Ett fast pris för upp till 20 fönster. Har du fler betalar du per fönster. Inga andra avgifter.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Välj kundtyp">
+        <button role="tab" id="tab-privat" aria-selected="true" aria-controls="panel-privat">Privatperson</button>
+        <button role="tab" id="tab-foretag" aria-selected="false" aria-controls="panel-foretag" tabindex="-1">Företag</button>
+      </div>
+
+      <div id="panel-privat" role="tabpanel" aria-labelledby="tab-privat">
+        <div class="prices">
+          <article class="price">
+            <h3>Utvändigt</h3>
+            <p class="price__desc">Vi putsar fönstrens utsida. Du behöver inte vara hemma.</p>
+            <p class="price__amount"><strong>250 kr</strong><span>efter RUT</span></p>
+            <p class="price__before">Upp till 20 fönster, 500 kr före RUT</p>
+            <ul>
+              <li><span>Extra fönster</span><span>18 kr/st</span></li>
+              <li><span>Övervåning</span><span>+100 kr</span></li>
+              <li><span>Spröjs, per fönster</span><span>+10 kr</span></li>
+              <li><span>Fönsterbleck</span><span>Ingår</span></li>
+            </ul>
+            <div class="price__foot"><a href="#raknare" class="btn btn--ghost" data-pick="ut">Räkna på utvändigt</a></div>
+          </article>
+
+          <article class="price">
+            <h3>In- och utvändigt</h3>
+            <p class="price__desc">Både insida och utsida. Rensa fönsterbrädorna innan vi kommer.</p>
+            <p class="price__amount"><strong>500 kr</strong><span>efter RUT</span></p>
+            <p class="price__before">Upp till 20 fönster, 1 000 kr före RUT</p>
+            <ul>
+              <li><span>Extra fönster</span><span>30 kr/st</span></li>
+              <li><span>Övervåning</span><span>+200 kr</span></li>
+              <li><span>Spröjs, per fönster</span><span>+10 kr</span></li>
+              <li><span>Fönsterbleck</span><span>Ingår</span></li>
+            </ul>
+            <div class="price__foot"><a href="#raknare" class="btn btn--ghost" data-pick="inut">Räkna på in- och utvändigt</a></div>
+          </article>
+
+          <article class="price price--abo">
+            <span class="price__badge">Abonnemang</span>
+            <h3>Fräscha Fönster</h3>
+            <p class="price__desc">Utvändig putsning fyra gånger om året. Vi hör av oss inför varje gång.</p>
+            <p class="price__amount"><strong>200 kr</strong><span>per gång efter RUT</span></p>
+            <p class="price__before">Upp till 20 fönster, 400 kr före RUT</p>
+            <div class="months" aria-label="Putsning i april, juni, september och december"><span>Apr</span><span>Jun</span><span>Sep</span><span>Dec</span></div>
+            <ul>
+              <li><span>Extra fönster</span><span>10 kr/st</span></li>
+              <li><span>Övervåning</span><span>+75 kr</span></li>
+              <li><span>Spröjs, per fönster</span><span>+10 kr</span></li>
+              <li><span>Bindningstid</span><span>Ingen</span></li>
+            </ul>
+            <div class="price__foot"><a href="#raknare" class="btn btn--glas" data-pick="abo">Räkna på abonnemang</a></div>
+          </article>
+        </div>
+        <p class="price__note">RUT-avdraget gäller om du har rätt till det och inte redan använt hela beloppet för året. Abonnemanget gäller i 12 månader från att du startar det och omfattar bara utsidan. Vill du ha insidan putsad bokar du det separat.</p>
+      </div>
+
+      <div id="panel-foretag" role="tabpanel" aria-labelledby="tab-foretag" hidden>
+        <div class="biz">
+          <table>
+            <caption class="sr">Priser för företag</caption>
+            <thead><tr><th scope="col">Tjänst</th><th scope="col">Grundpris</th><th scope="col">Övervåning</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Utvändigt</strong></td><td>500 kr</td><td>+150 kr</td></tr>
+              <tr><td><strong>In- och utvändigt</strong></td><td>1 000 kr</td><td>+250 kr</td></tr>
+              <tr><td>Spröjs, per fönster</td><td>+10 kr</td><td>–</td></tr>
+              <tr><td>Fönsterbleck</td><td>Ingår</td><td>–</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="biz__foot">
+          <p class="price__note" style="margin:0">Fenstro är inte momsregistrerat, så ingen moms tillkommer. Priset du ser är det du betalar. Har ni många fönster eller vill ha putsning regelbundet ger vi gärna ett eget pris.</p>
+          <a href="#kontakt" class="btn" data-type="foretag">Be om pris för er lokal</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--ink" id="raknare" aria-labelledby="raknare-rubrik">
+    <div class="wrap">
+      <div class="sec__head">
+        <h2 id="raknare-rubrik">Räkna ut ditt pris</h2>
+        <p class="lead">För privatpersoner. Fyll i hur många fönster du har så ser du vad det kostar, före och efter RUT.</p>
+      </div>
+      <div class="calc">
+        <form class="calc__form" id="calc" onsubmit="return false">
+          <fieldset style="border:0;margin:0;padding:0">
+            <legend class="field-label">Vad vill du ha putsat?</legend>
+            <div class="seg">
+              <input type="radio" name="tjanst" id="t-ut" value="ut" checked><label for="t-ut">Utvändigt<small>en gång</small></label>
+              <input type="radio" name="tjanst" id="t-inut" value="inut"><label for="t-inut">In- och utvändigt<small>en gång</small></label>
+              <input type="radio" name="tjanst" id="t-abo" value="abo"><label for="t-abo">Fräscha Fönster<small>4 gånger/år</small></label>
+            </div>
+          </fieldset>
+
+          <div>
+            <label class="field-label" for="antal">Antal fönster</label>
+            <div class="count">
+              <input type="range" id="antal-range" min="1" max="60" value="15" aria-label="Antal fönster, reglage">
+              <div class="stepper">
+                <button type="button" data-step="-1" aria-label="Ett fönster färre">−</button>
+                <input type="number" id="antal" min="1" max="200" value="15" inputmode="numeric">
+                <button type="button" data-step="1" aria-label="Ett fönster till">+</button>
+              </div>
+            </div>
+            <div class="panes" id="panes" aria-hidden="true"></div>
+            <div class="panes__key" aria-hidden="true"><span><i></i>Ingår i grundpriset</span><span><i class="x"></i>Extra fönster</span></div>
+          </div>
+
+          <div class="toggles">
+            <div class="check">
+              <label for="over">Fönster på övervåningen<small>Tillägg en gång, oavsett antal fönster där</small></label>
+              <input type="checkbox" id="over">
+            </div>
+            <div class="check">
+              <label for="sprojs-on">Tvätt av spröjs och ramar<small>10 kr per fönster med spröjs</small></label>
+              <input type="checkbox" id="sprojs-on">
+            </div>
+            <div id="sprojs-row" hidden>
+              <label class="field-label" for="sprojs">Hur många av fönstren har spröjs?</label>
+              <div class="stepper" style="display:inline-flex">
+                <button type="button" data-sstep="-1" aria-label="Ett färre">−</button>
+                <input type="number" id="sprojs" min="0" max="200" value="0" inputmode="numeric">
+                <button type="button" data-sstep="1" aria-label="Ett till">+</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="calc__out" aria-live="polite">
+          <h3 id="out-title">Utvändigt, en gång</h3>
+          <p class="big"><span id="out-big">250</span><small>kr</small></p>
+          <p class="calc__sub" id="out-sub">efter RUT-avdrag</p>
+          <ul class="rows" id="out-rows"></ul>
+          <a href="#kontakt" class="btn" id="calc-book">Boka till det här priset</a>
+          <p class="calc__fine">Priset gäller om antalet fönster stämmer när vi kommer. Vi räknar varje fönsterbåge som går att öppna, och varje fast ruta, som ett fönster.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="hur-rubrik">
+    <div class="wrap count-how">
+      <div>
+        <h2 id="hur-rubrik">Så räknar vi fönster</h2>
+        <p class="lead" style="margin-top:16px">Det är lätt att räkna fel, så här gör vi.</p>
+        <ul class="rules">
+          <li><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="3" y="3" width="38" height="38" rx="9" stroke="#0F2A4A" stroke-width="4"/><rect x="9" y="9" width="26" height="26" rx="3" fill="#BFD6E8"/></svg><div><b>Varje båge som går att öppna är ett fönster</b><span>Ett fönster med två öppningsbara delar räknas som två.</span></div></li>
+          <li><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="3" y="3" width="38" height="38" rx="9" stroke="#0F2A4A" stroke-width="4"/><rect x="9" y="9" width="26" height="26" rx="3" fill="#5FA8D3"/></svg><div><b>En fast ruta är också ett fönster</b><span>Även om den inte går att öppna.</span></div></li>
+          <li><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="10" y="3" width="24" height="38" rx="5" stroke="#0F2A4A" stroke-width="4"/><circle cx="28" cy="23" r="2" fill="#0F2A4A"/></svg><div><b>En glasdörr räknas som ett fönster</b><span>Till exempel altandörr eller balkongdörr.</span></div></li>
+          <li><svg width="44" height="44" viewBox="0 0 44 44" fill="none"><rect x="3" y="3" width="38" height="38" rx="9" stroke="#0F2A4A" stroke-width="4"/><path d="M22 5v34M5 22h34" stroke="#0F2A4A" stroke-width="3"/></svg><div><b>Flera små rutor kostar inte extra</b><span>Spröjs ger inget tillägg i sig. Vill du att vi tvättar spröjsen och ramarna är det ett tillval för 10 kr per fönster.</span></div></li>
+        </ul>
+      </div>
+      <figure class="diagram" style="margin:0">
+        <svg viewBox="0 0 520 380" role="img" aria-labelledby="diag-t">
+          <title id="diag-t">Exempel: ett fönster med två bågar och en fast ruta blir tre fönster, en altandörr blir ett fönster. Totalt fyra.</title>
+          <rect x="20" y="40" width="300" height="260" rx="14" fill="#fff" stroke="#0F2A4A" stroke-width="8"/>
+          <rect x="38" y="58" width="122" height="150" rx="5" fill="#BFD6E8"/>
+          <rect x="178" y="58" width="124" height="150" rx="5" fill="#BFD6E8"/>
+          <rect x="38" y="222" width="264" height="60" rx="5" fill="#5FA8D3"/>
+          <line x1="58" y1="120" x2="100" y2="78" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+          <line x1="74" y1="132" x2="108" y2="98" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+          <rect x="370" y="40" width="130" height="300" rx="10" fill="#fff" stroke="#0F2A4A" stroke-width="8"/>
+          <rect x="388" y="58" width="94" height="264" rx="5" fill="#BFD6E8"/>
+          <circle cx="468" cy="200" r="6" fill="#0F2A4A"/>
+          <g font-family="Montserrat, sans-serif" font-weight="800" font-size="26" fill="#0F2A4A" text-anchor="middle">
+            <circle cx="99" cy="160" r="22" fill="#fff"/><text x="99" y="169">1</text>
+            <circle cx="240" cy="160" r="22" fill="#fff"/><text x="240" y="169">2</text>
+            <circle cx="170" cy="252" r="22" fill="#fff"/><text x="170" y="261">3</text>
+            <circle cx="435" cy="150" r="22" fill="#fff"/><text x="435" y="159">4</text>
+          </g>
+          <g font-family="Montserrat, sans-serif" font-size="15" font-weight="600" fill="#5A6B7C" text-anchor="middle">
+            <text x="170" y="332">2 bågar + 1 fast ruta</text>
+            <text x="435" y="370">Altandörr</text>
+          </g>
+        </svg>
+        <figcaption>Det här blir 4 fönster.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sec sec--is" aria-labelledby="bilder-rubrik">
+    <div class="wrap">
+      <div class="sec__head">
+        <h2 id="bilder-rubrik">Från jobben</h2>
+      </div>
+      <div class="gallery">
+        <figure><img src="img/putsning.jpg" alt="Fönster putsas med mikrofiberduk och skrapa" loading="lazy" width="871" height="1400"></figure>
+        <figure><img src="img/rent-glas.jpg" alt="Nyputsat fönster där träd och himmel speglas i glaset" loading="lazy" width="1105" height="1400"></figure>
+        <figure><img src="img/fonster-vitt.jpg" alt="Vitt tvåluftsfönster med blå himmel i rutorna" loading="lazy" width="995" height="1400"></figure>
+        <figure><img src="img/fonster-vagg.jpg" alt="Nyputsat fönster i vit putsfasad" loading="lazy" width="1030" height="1358"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="om-oss" aria-labelledby="om-rubrik">
+    <div class="wrap two">
+      <div>
+        <h2 id="om-rubrik">Om oss</h2>
+        <p class="lead">Fenstro är tre kompisar från Vellinge som startade fönsterputs 2026.</p>
+        <p style="margin-top:18px">Vi vill att det ska vara enkelt att anlita oss. Därför har vi ett fast pris, inga extra avgifter och inget krångel med resekostnader. Vi hör alltid av oss innan vi kommer.</p>
+        <p>Fenstro Handelsbolag är registrerat hos Bolagsverket.</p>
+      </div>
+      <div>
+        <h2 style="font-size:clamp(26px,3vw,34px)">Här putsar vi</h2>
+        <p class="lead">Vi åker ut utan extra kostnad i hela området.</p>
+        <ul class="areas">
+          <li class="home">Vellinge</li>
+          <li>Höllviken</li>
+          <li>Skanör</li>
+          <li>Falsterbo</li>
+          <li>Ljunghusen</li>
+          <li>Malmö</li>
+          <li>Trelleborg</li>
+          <li>Svedala</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--is" aria-labelledby="omdome-rubrik">
+    <div class="wrap reviews">
+      <div>
+        <div class="stars" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#5FA8D3"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.6 6 20.9l1.3-6.7-5-4.7 6.8-.8z"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#5FA8D3"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.6 6 20.9l1.3-6.7-5-4.7 6.8-.8z"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#5FA8D3"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.6 6 20.9l1.3-6.7-5-4.7 6.8-.8z"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#5FA8D3"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.6 6 20.9l1.3-6.7-5-4.7 6.8-.8z"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#5FA8D3"><path d="M12 2.5l2.9 6.2 6.8.8-5 4.7 1.3 6.7L12 17.6 6 20.9l1.3-6.7-5-4.7 6.8-.8z"/></svg>
+        </div>
+        <h2 id="omdome-rubrik">Vad tycker kunderna?</h2>
+        <p class="lead">Läs omdömen från kunder på Google. Har vi putsat hos dig får du gärna lämna ett eget.</p>
+      </div>
+      <a class="btn" href="https://www.google.com/search?q=Fenstro+F%C3%B6nster" target="_blank" rel="noopener">Se omdömen på Google</a>
+    </div>
+  </section>
+
+  <section class="sec" id="fragor" aria-labelledby="faq-rubrik">
+    <div class="wrap">
+      <div class="sec__head"><h2 id="faq-rubrik">Vanliga frågor</h2></div>
+      <div class="faq">
+        <details>
+          <summary>Behöver jag vara hemma?</summary>
+          <p>Inte för utvändig putsning, så länge vi kommer åt fönstren. Vid in- och utvändigt behöver vi komma in, så då bokar vi en tid när någon är hemma.</p>
+        </details>
+        <details>
+          <summary>Kostar det något extra att ni kommer ut?</summary>
+          <p>Nej. Vi tar inga resekostnader, startavgifter eller andra tillägg. Du betalar priset för putsningen och eventuella tillval du har valt.</p>
+        </details>
+        <details>
+          <summary>Hur fungerar RUT-avdraget?</summary>
+          <p>Fönsterputs i hemmet ger rätt till RUT-avdrag, vilket halverar priset. Du betalar halva beloppet och vi ansöker om resten hos Skatteverket. Du behöver ha rätt till RUT och utrymme kvar för året. Företag kan inte använda RUT.</p>
+        </details>
+        <details>
+          <summary>Vad behöver jag göra innan ni putsar insidan?</summary>
+          <p>Ta bort saker från fönsterbrädorna och se till att vi kommer åt fönstren. Då går det snabbare och inget riskerar att gå sönder.</p>
+        </details>
+        <details>
+          <summary>Hur fungerar abonnemanget Fräscha Fönster?</summary>
+          <p>Vi putsar utsidan fyra gånger om året, i april, juni, september och december. Vi hör av oss inför varje gång och bokar en dag. Abonnemanget gäller i 12 månader från att du startar det och har ingen bindningstid.</p>
+        </details>
+        <details>
+          <summary>Vad är spröjs, och kostar det extra?</summary>
+          <p>Spröjs är ribborna som delar upp ett fönster i mindre rutor. Ett fönster med spröjs kostar inget extra. Vill du att vi också tvättar spröjsen och ramarna runt glaset kostar det 10 kr per fönster.</p>
+        </details>
+        <details>
+          <summary>Ingår fönsterbleck?</summary>
+          <p>Ja, vi torkar fönsterblecken utan extra kostnad.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec--ink" id="kontakt" aria-labelledby="kontakt-rubrik">
+    <div class="wrap contact">
+      <div>
+        <h2 id="kontakt-rubrik">Boka putsning</h2>
+        <p class="lead" style="margin-top:16px">Skicka en förfrågan så hör vi av oss med en tid. Du kan också nå oss direkt.</p>
+        <ul class="channels">
+          <li><a href="mailto:fenstrofonster@gmail.com">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#5FA8D3"/><rect x="10" y="13" width="20" height="14" rx="3" stroke="#0F2A4A" stroke-width="2.4"/><path d="M11 15l9 6.5 9-6.5" stroke="#0F2A4A" stroke-width="2.4" stroke-linejoin="round"/></svg>
+            <div><b>fenstrofonster@gmail.com</b><span>Mejla oss</span></div></a></li>
+          <li><a href="https://www.instagram.com/fenstro.fonster/" target="_blank" rel="noopener">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#5FA8D3"/><rect x="11" y="11" width="18" height="18" rx="5.5" stroke="#0F2A4A" stroke-width="2.4"/><circle cx="20" cy="20" r="4.2" stroke="#0F2A4A" stroke-width="2.4"/><circle cx="25.3" cy="14.7" r="1.4" fill="#0F2A4A"/></svg>
+            <div><b>@fenstro.fonster</b><span>Instagram</span></div></a></li>
+          <li><a href="https://www.facebook.com/search/top?q=Fenstro%20F%C3%B6nster" target="_blank" rel="noopener">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#5FA8D3"/><path d="M21.6 30V21h3l.5-3.5h-3.5v-2.2c0-1 .3-1.7 1.8-1.7h1.9v-3.1c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6v2.5h-3V21h3v9" fill="#0F2A4A"/></svg>
+            <div><b>Fenstro Fönster</b><span>Facebook</span></div></a></li>
+          <li><a href="https://www.google.com/search?q=Fenstro+F%C3%B6nster" target="_blank" rel="noopener">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="12" fill="#5FA8D3"/><path d="M20 10.5l2.7 5.8 6.3.7-4.7 4.3 1.3 6.2L20 24.4l-5.6 3.1 1.3-6.2-4.7-4.3 6.3-.7z" fill="#0F2A4A"/></svg>
+            <div><b>Omdömen</b><span>Google</span></div></a></li>
+        </ul>
+      </div>
+
+      <form class="form" id="form" novalidate>
+        <div><label for="f-namn">Namn</label><input id="f-namn" name="namn" autocomplete="name" required></div>
+        <div><label for="f-tel">Telefon</label><input id="f-tel" name="telefon" type="tel" autocomplete="tel" required></div>
+        <div><label for="f-ort">Ort</label>
+          <select id="f-ort" name="ort">
+            <option>Vellinge</option><option>Höllviken</option><option>Skanör</option><option>Falsterbo</option><option>Ljunghusen</option><option>Malmö</option><option>Trelleborg</option><option>Svedala</option><option>Annan ort</option>
+          </select></div>
+        <div><label for="f-kund">Jag är</label>
+          <select id="f-kund" name="kund"><option value="privat">Privatperson</option><option value="foretag">Företag</option></select></div>
+        <div class="full"><label for="f-tjanst">Tjänst</label>
+          <select id="f-tjanst" name="tjanst">
+            <option value="ut">Utvändigt</option>
+            <option value="inut">In- och utvändigt</option>
+            <option value="abo">Fräscha Fönster (abonnemang)</option>
+            <option value="vet-ej">Vet inte, vill ha hjälp att välja</option>
+          </select></div>
+        <div class="full"><label for="f-msg">Meddelande</label>
+          <textarea id="f-msg" name="meddelande" placeholder="Ungefär hur många fönster, om det finns övervåning, och när det passar dig."></textarea></div>
+        <div class="full"><button class="btn" type="submit">Skicka förfrågan</button></div>
+        <p class="form__note full">Knappen öppnar ditt mejlprogram med förfrågan ifylld. Skicka mejlet därifrån. Vi sparar inga uppgifter på hemsidan.</p>
+        <p class="form__ok" id="form-ok" hidden role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__in">
+      <div>
+        <img src="img/logo-vit.svg" alt="Fenstro Fönster" width="300" height="70">
+        <p>Fönsterputs i Vellinge med omnejd.</p>
+      </div>
+      <ul>
+        <li><a href="#priser">Priser</a></li>
+        <li><a href="#raknare">Räkna ut pris</a></li>
+        <li><a href="#fragor">Vanliga frågor</a></li>
+        <li><a href="#kontakt">Boka putsning</a></li>
+      </ul>
+      <ul>
+        <li><a href="mailto:fenstrofonster@gmail.com">fenstrofonster@gmail.com</a></li>
+        <li><a href="https://www.instagram.com/fenstro.fonster/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.facebook.com/search/top?q=Fenstro%20F%C3%B6nster" target="_blank" rel="noopener">Facebook</a></li>
+      </ul>
+    </div>
+    <div class="foot__bottom">Fenstro Handelsbolag, org.nr 969805-0235, Vellinge. © <span id="year">2026</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var MAIL='fenstrofonster@gmail.com';
+  var kr=function(n){return Math.round(n).toLocaleString('sv-SE')};
+
+  /* Sidhuvud och meny */
+  var top=document.getElementById('top');
+  var onScroll=function(){top.classList.toggle('is-scrolled',window.scrollY>8)};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var mb=document.querySelector('.menu-btn'),nav=document.getElementById('nav');
+  mb.addEventListener('click',function(){
+    var open=nav.classList.toggle('is-open');
+    mb.setAttribute('aria-expanded',open);mb.setAttribute('aria-label',open?'Stäng menyn':'Öppna menyn');
+  });
+  nav.addEventListener('click',function(e){if(e.target.closest('a')){nav.classList.remove('is-open');mb.setAttribute('aria-expanded','false')}});
+
+  /* Skrapan torkar rent fönstret när bilden laddat */
+  var frame=document.getElementById('frame'),heroImg=frame.querySelector('img');
+  var wipe=function(){requestAnimationFrame(function(){frame.classList.add('is-wiping')})};
+  if(heroImg.complete)wipe();else{heroImg.addEventListener('load',wipe);heroImg.addEventListener('error',wipe)}
+
+  /* Flikar privat/företag */
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+  function selectTab(t){
+    tabs.forEach(function(x){
+      var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden=!on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){selectTab(t)});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var n=tabs[(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];selectTab(n);n.focus()}
+    });
+  });
+
+  /* Prisräknare (privat). Alla belopp före RUT; RUT halverar. */
+  var P={
+    ut:  {namn:'Utvändigt, en gång',          bas:500, extra:18, over:100, gang:1},
+    inut:{namn:'In- och utvändigt, en gång',  bas:1000,extra:30, over:200, gang:1},
+    abo: {namn:'Fräscha Fönster, abonnemang', bas:400, extra:10, over:75,  gang:4}
+  };
+  var INGAR=20,SPROJS=10;
+  var $=function(id){return document.getElementById(id)};
+  var range=$('antal-range'),num=$('antal'),over=$('over'),sOn=$('sprojs-on'),sRow=$('sprojs-row'),sNum=$('sprojs'),panes=$('panes');
+  var state={};
+
+  function clamp(v,a,b){v=parseInt(v,10);if(isNaN(v))v=a;return Math.max(a,Math.min(b,v))}
+  function calc(){
+    var t=document.querySelector('input[name=tjanst]:checked').value,p=P[t];
+    var n=clamp(num.value,1,200),s=sOn.checked?clamp(sNum.value,0,n):0;
+    if(String(n)!==num.value&&document.activeElement!==num)num.value=n;
+    if(sOn.checked&&String(s)!==sNum.value&&document.activeElement!==sNum)sNum.value=s;
+    range.value=Math.min(n,60);
+    var extraN=Math.max(0,n-INGAR),extra=extraN*p.extra,ov=over.checked?p.over:0,sp=s*SPROJS;
+    var gang=p.bas+extra+ov+sp,rut=Math.floor(gang/2),efter=gang-rut;
+
+    var rows=[['Grundpris, upp till '+INGAR+' fönster',p.bas]];
+    if(extraN)rows.push([extraN+' extra fönster × '+p.extra+' kr',extra]);
+    if(ov)rows.push(['Övervåning',ov]);
+    if(sp)rows.push(['Spröjs, '+s+' fönster × '+SPROJS+' kr',sp]);
+    var html=rows.map(function(r){return '<li><span>'+r[0]+'</span><span>'+kr(r[1])+' kr</span></li>'}).join('');
+    html+='<li class="sum"><span>Före RUT'+(p.gang>1?', per gång':'')+'</span><span>'+kr(gang)+' kr</span></li>';
+    html+='<li class="rut"><span>RUT-avdrag (50 %)</span><span>−'+kr(rut)+' kr</span></li>';
+    if(p.gang>1)html+='<li class="sum"><span>Per år, 4 gånger efter RUT</span><span>'+kr(efter*4)+' kr</span></li>';
+    $('out-rows').innerHTML=html;
+    $('out-title').textContent=p.namn;
+    $('out-big').textContent=kr(efter);
+    $('out-sub').textContent=p.gang>1?'per gång efter RUT-avdrag':'efter RUT-avdrag';
+
+    var show=Math.min(n,60),h='';
+    for(var i=0;i<show;i++)h+='<i'+(i>=INGAR?' class="x"':'')+'></i>';
+    if(n>60)h+='<span style="font-size:13px;color:#BFD6E8;align-self:center">+'+(n-60)+'</span>';
+    panes.innerHTML=h;
+
+    state={t:t,n:n,over:over.checked,s:s,pris:efter,fore:gang};
+  }
+  range.addEventListener('input',function(){num.value=range.value;calc()});
+  num.addEventListener('input',calc);
+  num.addEventListener('blur',function(){num.value=clamp(num.value,1,200);calc()});
+  sNum.addEventListener('blur',function(){sNum.value=clamp(sNum.value,0,clamp(num.value,1,200));calc()});
+  sNum.addEventListener('input',calc);
+  document.querySelectorAll('[data-step]').forEach(function(b){b.addEventListener('click',function(){num.value=clamp(+num.value+ +b.dataset.step,1,200);calc()})});
+  document.querySelectorAll('[data-sstep]').forEach(function(b){b.addEventListener('click',function(){sNum.value=clamp(+sNum.value+ +b.dataset.sstep,0,clamp(num.value,1,200));calc()})});
+  document.querySelectorAll('input[name=tjanst]').forEach(function(r){r.addEventListener('change',calc)});
+  over.addEventListener('change',calc);
+  sOn.addEventListener('change',function(){sRow.hidden=!sOn.checked;if(sOn.checked&&+sNum.value===0)sNum.value=clamp(num.value,1,200);calc()});
+  document.querySelectorAll('[data-pick]').forEach(function(a){a.addEventListener('click',function(){
+    document.getElementById('t-'+a.dataset.pick).checked=true;calc();
+  })});
+  calc();
+
+  /* Fyll i formuläret från räknaren */
+  var f={kund:$('f-kund'),tjanst:$('f-tjanst'),msg:$('f-msg')};
+  $('calc-book').addEventListener('click',function(){
+    f.kund.value='privat';f.tjanst.value=state.t;
+    var rad=state.n+' fönster'+(state.over?', med övervåning':'')+(state.s?', spröjs på '+state.s+' fönster':'')+'. Räknat pris: '+kr(state.pris)+' kr efter RUT'+(state.t==='abo'?' per gång':'')+'.';
+    f.msg.value=rad+'\n\n';
+    setTimeout(function(){$('f-namn').focus({preventScroll:true})},450);
+  });
+  document.querySelectorAll('[data-type=foretag]').forEach(function(a){a.addEventListener('click',function(){f.kund.value='foretag'})});
+
+  /* Formulär: öppnar mejlprogrammet med förfrågan ifylld */
+  var form=$('form'),ok=$('form-ok');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var namn=$('f-namn'),tel=$('f-tel');
+    if(!namn.value.trim()){namn.focus();ok.hidden=false;ok.textContent='Fyll i ditt namn.';return}
+    if(!tel.value.trim()){tel.focus();ok.hidden=false;ok.textContent='Fyll i ett telefonnummer så vi kan ringa och boka.';return}
+    var tj=f.tjanst.options[f.tjanst.selectedIndex].text,ort=$('f-ort').value;
+    var kund=f.kund.value==='foretag'?'Företag':'Privatperson';
+    var subj='Förfrågan: '+tj+' i '+ort;
+    var body='Namn: '+namn.value.trim()+'\nTelefon: '+tel.value.trim()+'\nOrt: '+ort+'\nKund: '+kund+'\nTjänst: '+tj+'\n\n'+f.msg.value.trim();
+    window.location.href='mailto:'+MAIL+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+    ok.hidden=false;
+    ok.textContent='Ditt mejlprogram öppnas med förfrågan ifylld. Tryck på skicka där. Öppnades inget? Mejla oss på '+MAIL+'.';
+  });
+
+  $('year').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
