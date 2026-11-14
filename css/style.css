@@ -285,6 +285,8 @@ button{font:inherit;color:inherit}
 .reviews h2{max-width:14em}
 .reviews .lead{margin-top:14px}
 .stars{display:flex;gap:4px;margin-bottom:16px}
+.reviews__btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn.tp svg{flex:none}
 
 /* FAQ */
 .faq{max-width:820px}
