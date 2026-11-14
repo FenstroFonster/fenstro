@@ -263,6 +263,17 @@ button{font:inherit;color:inherit}
 .rows li.tot{font-weight:700;padding-top:9px;border-top:1px dashed var(--linje)}
 .rows li.rut{color:var(--glas-d);font-weight:600}
 .sum__fine{font-size:13px;color:var(--skiffer);margin-top:18px}
+.promo{margin-top:18px;padding-top:16px;border-top:1px solid var(--linje)}
+.promo__open{background:none;border:0;padding:0;font-weight:700;font-size:14px;color:var(--glas-d);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.promo__row{display:flex;gap:8px;margin-top:10px}
+.promo__row input{flex:1;min-width:0;font:inherit;font-size:15px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);background:var(--is);border:2px solid transparent;border-radius:12px;padding:11px 14px}
+.promo__row input:focus{outline:none;border-color:var(--glas);background:var(--vit)}
+.promo__row .btn{padding:11px 18px;font-size:14px}
+.promo__msg{font-size:14px;font-weight:600;margin-top:10px}
+.promo__msg.ok{color:#1f7a4d}.promo__msg.no{color:#b3261e}
+.promo__tag{display:inline-flex;align-items:center;gap:10px;margin-top:10px;padding:8px 8px 8px 14px;border-radius:999px;background:#e5f3ea;color:#1f5f3d;font-size:14px;font-weight:700}
+.promo__tag button{border:0;background:rgba(31,95,61,.12);color:#1f5f3d;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:15px;line-height:1}
+.rows li.disc{color:#1f7a4d;font-weight:600}
 .done{text-align:center;padding:clamp(24px,4vw,48px) 8px}
 .done__icon{width:72px;height:72px;margin:0 auto 22px;border-radius:50%;background:var(--glas);display:grid;place-items:center}
 .done__icon svg{stroke-dasharray:40;stroke-dashoffset:40;animation:draw .5s .15s var(--ease) forwards}
@@ -641,6 +652,18 @@ button{font:inherit;color:inherit}
           <p class="big"><span id="sum-big">250</span><small>kr</small></p>
           <p class="sum__sub" id="sum-sub">efter RUT-avdrag</p>
           <ul class="rows" id="sum-rows"></ul>
+          <div class="promo">
+            <button type="button" class="promo__open" id="promo-open" aria-expanded="false">Har du en kampanjkod?</button>
+            <div id="promo-box" hidden>
+              <div class="promo__row">
+                <label for="promo-in" class="sr">Kampanjkod</label>
+                <input id="promo-in" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Skriv koden">
+                <button type="button" class="btn" id="promo-go">Använd</button>
+              </div>
+              <p class="promo__msg" id="promo-msg" role="status" hidden></p>
+            </div>
+            <div id="promo-on" hidden><span class="promo__tag"><span id="promo-label"></span><button type="button" id="promo-x" aria-label="Ta bort kampanjkoden">×</button></span></div>
+          </div>
           <p class="sum__fine">Priset gäller om antalet fönster stämmer när vi kommer. Vi räknar varje båge som går att öppna, och varje fast ruta, som ett fönster.</p>
         </aside>
       </div>
@@ -903,6 +926,9 @@ button{font:inherit;color:inherit}
     inut:{namn:'In- och utvändigt, företag',  bas:1000,over:250}
   };
   var INGAR=20,SPROJS=10;
+  /* Kampanjkoder. Bara hashade, så koderna går inte att läsa i sidans kod. */
+  var PROMO={"4c2d98aae9ad1c728762ce6c244c780171535bd30aaee0579e1c16a4dca84a0c": 10, "74562e980b1a679e984c4444b64293d71b26cd49bb1121a15ba1ee1bfcb1943f": 25, "e4729e5f17a8effb416e9b06e60513e55f408548172fcf5c17f81610ad5726fc": 50, "181a3d268d370c703d20833912bdd124bfafdfa335eeed5662fd552b2433371b": 100};
+  var promo=null;
 
   var range=$('antal-range'),num=$('antal'),over=$('over'),sOn=$('sprojs-on'),sRow=$('sprojs-row'),sNum=$('sprojs');
   var bigEl=$('sum-big'),shown=250,state={};
@@ -928,24 +954,26 @@ button{font:inherit;color:inherit}
 
     if(kund==='privat'){
       var p=PRIVAT[t],extra=extraN*p.extra,ov=over.checked?p.over:0,sp=s*SPROJS;
-      var gang=p.bas+extra+ov+sp,rut=Math.floor(gang/2),efter=gang-rut;
+      var full=p.bas+extra+ov+sp,disc=promo?Math.round(full*promo.pct/100):0,gang=full-disc,rut=Math.floor(gang/2),efter=gang-rut;
       rows.push(['Grundpris, upp till '+INGAR+' fönster',kr(p.bas)+' kr']);
       if(extraN)rows.push([extraN+' extra fönster × '+p.extra+' kr',kr(extra)+' kr']);
       if(ov)rows.push(['Övervåning',kr(ov)+' kr']);
       if(sp)rows.push(['Spröjs, '+s+' × '+SPROJS+' kr',kr(sp)+' kr']);
+      if(disc)rows.push(['Kampanjkod −'+promo.pct+' %','−'+kr(disc)+' kr','disc']);
       rows.push(['Före RUT'+(p.gang>1?', per gång':''),kr(gang)+' kr','tot']);
       rows.push(['RUT-avdrag (50 %)','−'+kr(rut)+' kr','rut']);
       if(p.gang>1)rows.push(['Per år, 4 gånger efter RUT',kr(efter*4)+' kr','tot']);
       big=efter;sub=p.gang>1?'per gång efter RUT-avdrag':'efter RUT-avdrag';title=p.namn;
-      state={kund:'Privatperson',tjanst:p.namn,pris:kr(efter)+' kr efter RUT'+(p.gang>1?' per gång ('+kr(efter*4)+' kr/år)':''),fore:kr(gang)+' kr'};
+      state={disc:disc,kund:'Privatperson',tjanst:p.namn,pris:kr(efter)+' kr efter RUT'+(p.gang>1?' per gång ('+kr(efter*4)+' kr/år)':''),fore:kr(gang)+' kr'};
     }else{
-      var f=FORETAG[t],ovf=over.checked?f.over:0,spf=s*SPROJS,tot=f.bas+ovf+spf;
+      var f=FORETAG[t],ovf=over.checked?f.over:0,spf=s*SPROJS,fullf=f.bas+ovf+spf,discf=promo?Math.round(fullf*promo.pct/100):0,tot=fullf-discf;
       rows.push(['Grundpris, upp till '+INGAR+' fönster',kr(f.bas)+' kr']);
       if(ovf)rows.push(['Övervåning',kr(ovf)+' kr']);
       if(spf)rows.push(['Spröjs, '+s+' × '+SPROJS+' kr',kr(spf)+' kr']);
+      if(discf)rows.push(['Kampanjkod −'+promo.pct+' %','−'+kr(discf)+' kr','disc']);
       rows.push(['Totalt, ingen moms tillkommer',kr(tot)+' kr','tot']);
       big=tot;sub=extraN?'plus extra fönster, vi bekräftar priset':'totalpris, ingen moms tillkommer';title=f.namn;
-      state={kund:'Företag',tjanst:f.namn,pris:kr(tot)+' kr'+(extraN?' + '+extraN+' extra fönster (pris bekräftas)':''),fore:''};
+      state={disc:discf,kund:'Företag',tjanst:f.namn,pris:kr(tot)+' kr'+(extraN?' + '+extraN+' extra fönster (pris bekräftas)':''),fore:''};
     }
     $('biz-note').hidden=!(kund==='foretag'&&extraN>0);
     $('rut-note').hidden=kund!=='privat';
@@ -981,6 +1009,27 @@ button{font:inherit;color:inherit}
   })});
   document.querySelectorAll('[data-kund=foretag]').forEach(function(a){a.addEventListener('click',function(){$('k-foretag').checked=true;if(a.dataset.pickB)$('t-'+a.dataset.pickB).checked=true;goStep(1);calc()})});
   calc();
+
+  /* ===== Kampanjkod ===== */
+  var pOpen=$('promo-open'),pBox=$('promo-box'),pIn=$('promo-in'),pMsg=$('promo-msg'),pOn=$('promo-on');
+  function sha(txt){return crypto.subtle.digest('SHA-256',new TextEncoder().encode(txt)).then(function(b){return [].map.call(new Uint8Array(b),function(x){return ('0'+x.toString(16)).slice(-2)}).join('')})}
+  pOpen.addEventListener('click',function(){pBox.hidden=false;pOpen.hidden=true;pOpen.setAttribute('aria-expanded','true');pIn.focus()});
+  function tryCode(){
+    var code=pIn.value.trim().toUpperCase().replace(/\s+/g,'');
+    if(!code){pIn.focus();return}
+    if(!window.crypto||!crypto.subtle){pMsg.hidden=false;pMsg.className='promo__msg no';pMsg.textContent='Koden kan inte kontrolleras i den här webbläsaren. Skriv den i meddelandet i steg 2.';return}
+    sha('fenstro:'+code).then(function(h){
+      var pct=PROMO[h];pMsg.hidden=false;
+      if(pct){
+        promo={code:code,pct:pct};pBox.hidden=true;pOn.hidden=false;
+        $('promo-label').textContent=code+'  −'+pct+' %';
+        pMsg.hidden=true;calc();
+      }else{pMsg.className='promo__msg no';pMsg.textContent='Koden fungerar inte. Kolla stavningen.'}
+    });
+  }
+  $('promo-go').addEventListener('click',tryCode);
+  pIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();tryCode()}});
+  $('promo-x').addEventListener('click',function(){promo=null;pOn.hidden=true;pBox.hidden=false;pIn.value='';calc();pIn.focus()});
 
   /* ===== Bokning i tre steg ===== */
   var form=$('booking'),step=1,bodies=form.querySelectorAll('[data-step]'),stepsEl=$('steps').children;
@@ -1030,6 +1079,7 @@ button{font:inherit;color:inherit}
       'Kund':state.kund,'Tjänst':state.tjanst,'Antal fönster':String(state.n),
       'Övervåning':state.over?'Ja':'Nej','Spröjs':state.s?state.s+' fönster':'Nej',
       'Pris':state.pris,'Före RUT':state.fore||'–',
+      'Kampanjkod':promo?promo.code+' (−'+promo.pct+' %, −'+kr(state.disc)+' kr)':'–',
       'Adress':$('b-adress').value.trim()+', '+$('b-ort').value,
       'Önskad tid':tid+(d?', helst '+d:''),
       'Meddelande':$('b-msg').value.trim()||'–',
