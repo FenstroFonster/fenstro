@@ -578,7 +578,10 @@ button{font:inherit;color:inherit}
                 <div class="inp"><label for="b-mail">E-post</label><input id="b-mail" type="email" autocomplete="email" required></div>
               </div>
               <p class="note" id="rut-note">För RUT-avdraget behöver vi ditt personnummer. Det frågar vi efter när vi bekräftar bokningen, inte här.</p>
-              <label class="consent"><input type="checkbox" id="b-ok" required><span>Jag godkänner att Fenstro använder uppgifterna för att kontakta mig om bokningen.</span></label>
+              <div style="display:grid;gap:12px">
+                <label class="consent"><input type="checkbox" id="b-ok" required><span>Jag godkänner att Fenstro använder uppgifterna för att kontakta mig om bokningen. <a href="integritet.html" style="color:#BFD6E8">Så hanterar vi uppgifterna</a></span></label>
+                <label class="consent"><input type="checkbox" id="b-utskick"><span>Ni får gärna skicka påminnelser och erbjudanden till mig via mejl och sms. <small style="opacity:.8">(valfritt, du kan säga nej när du vill)</small></span></label>
+              </div>
             </div>
 
             <p class="err" id="b-err" role="alert" hidden></p>
@@ -739,6 +742,7 @@ button{font:inherit;color:inherit}
         <div class="inp"><label for="a-namn">Namn</label><input id="a-namn" autocomplete="name" required></div>
         <div class="inp"><label for="a-kontakt">Telefon eller e-post</label><input id="a-kontakt" autocomplete="email" required></div>
         <div class="inp"><label for="a-msg">Din fråga</label><textarea id="a-msg" required></textarea></div>
+        <label class="consent"><input type="checkbox" id="a-utskick"><span>Ni får gärna skicka påminnelser och erbjudanden till mig via mejl och sms. <small style="opacity:.8">(valfritt)</small></span></label>
         <p class="err" id="a-err" role="alert" hidden></p>
         <button class="btn btn--glas" type="submit" id="a-send">Skicka frågan</button>
         <p class="note" id="a-done" hidden role="status">Tack, vi har fått din fråga och hör av oss.</p>
@@ -766,7 +770,7 @@ button{font:inherit;color:inherit}
         <li><a href="https://www.facebook.com/search/top?q=Fenstro%20F%C3%B6nster" target="_blank" rel="noopener">Facebook</a></li>
       </ul>
     </div>
-    <div class="foot__bottom">Fenstro Handelsbolag, org.nr 969805-0235, Vellinge. Uppgifter du skickar via sidan används bara för att kontakta dig. © <span id="year">2026</span></div>
+    <div class="foot__bottom">Fenstro Handelsbolag, org.nr 969805-0235, Vellinge. <a href="integritet.html">Integritet och cookies</a>. © <span id="year">2026</span></div>
   </div>
 </footer>
 
@@ -784,6 +788,9 @@ button{font:inherit;color:inherit}
   var MAIL = 'fenstrofonster@gmail.com';
   /* NTFY_TOPIC: kanalen i appen ntfy. Alla som prenumererar på den får en
      pushnotis när någon bokar eller frågar. Notisen innehåller inga personuppgifter. */
+  /* CF_ANALYTICS_TOKEN: token från Cloudflare Web Analytics. Besöksstatistik utan cookies. */
+  var CF_ANALYTICS_TOKEN = '';
+  if(CF_ANALYTICS_TOKEN){var cf=document.createElement('script');cf.defer=true;cf.src='https://static.cloudflareinsights.com/beacon.min.js';cf.setAttribute('data-cf-beacon',JSON.stringify({token:CF_ANALYTICS_TOKEN}));document.body.appendChild(cf)}
   var NTFY_TOPIC = 'fenstro-ddd9891c7f64';
 
   var $ = function(id){return document.getElementById(id)};
@@ -976,7 +983,8 @@ button{font:inherit;color:inherit}
       'Adress':$('b-adress').value.trim()+', '+$('b-ort').value,
       'Önskad tid':tid+(d?', helst '+d:''),
       'Meddelande':$('b-msg').value.trim()||'–',
-      'Namn':$('b-namn').value.trim(),'Telefon':$('b-tel').value.trim(),'E-post':$('b-mail').value.trim()
+      'Namn':$('b-namn').value.trim(),'Telefon':$('b-tel').value.trim(),'E-post':$('b-mail').value.trim(),
+      'Får skicka erbjudanden via mejl och sms':$('b-utskick').checked?'JA':'Nej'
     };
   }
   function send(subject,data,replyTo,bot){
@@ -1032,7 +1040,7 @@ button{font:inherit;color:inherit}
     if(!m.value.trim()){ae.textContent='Skriv din fråga.';ae.hidden=false;m.focus();return}
     var btn=$('a-send');btn.disabled=true;btn.textContent='Skickar…';
     var kv=k.value.trim();
-    send('Fråga från '+n.value.trim(),{'Namn':n.value.trim(),'Kontakt':kv,'Fråga':m.value.trim()},/@/.test(kv)?kv:'',ask.botcheck.checked)
+    send('Fråga från '+n.value.trim(),{'Namn':n.value.trim(),'Kontakt':kv,'Fråga':m.value.trim(),'Får skicka erbjudanden via mejl och sms':$('a-utskick').checked?'JA':'Nej'},/@/.test(kv)?kv:'',ask.botcheck.checked)
       .then(function(how){
         if(how===true)notify('Ny fråga','Någon har ställt en fråga via hemsidan. Se mejlen.');
         $('a-done').textContent=how==='mailto'?'Ditt mejlprogram öppnas med frågan ifylld. Tryck på skicka där.':'Tack, vi har fått din fråga och hör av oss.';
