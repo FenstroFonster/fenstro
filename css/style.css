@@ -148,6 +148,10 @@ button{font:inherit;color:inherit}
 .price__badge{position:absolute;top:-13px;left:28px;background:var(--glas);color:var(--ink);font-size:13px;font-weight:700;padding:5px 12px;border-radius:999px}
 .months{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:22px}
 .months span{text-align:center;font-size:13px;font-weight:700;padding:8px 0;border-radius:8px;background:rgba(95,168,211,.18);color:var(--frost)}
+.assess{display:flex;gap:16px;align-items:flex-start;margin-top:20px;padding:20px 22px;border-radius:18px;background:var(--vit);border:1px solid var(--linje);max-width:760px}
+.assess svg{flex:none}
+.assess b{display:block;font-size:17px}
+.assess span{display:block;color:var(--skiffer);font-size:15px;margin-top:2px}
 .price__note{font-size:14px;color:var(--skiffer);margin-top:28px;max-width:60em}
 .biz{background:var(--vit);border-radius:20px;border:1px solid var(--linje);overflow:hidden}
 .biz table{width:100%;border-collapse:collapse;font-size:16px}
@@ -228,6 +232,7 @@ button{font:inherit;color:inherit}
 .sum__sub{color:var(--skiffer);font-size:15px}
 .rows{list-style:none;margin:22px 0 0;padding:18px 0 0;border-top:1px solid var(--linje);display:grid;gap:9px;font-size:15px}
 .rows li{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
+.rows li span:last-child{white-space:nowrap}
 .rows li.tot{font-weight:700;padding-top:9px;border-top:1px dashed var(--linje)}
 .rows li.rut{color:var(--glas-d);font-weight:600}
 .sum__fine{font-size:13px;color:var(--skiffer);margin-top:18px}

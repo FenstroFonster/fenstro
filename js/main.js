@@ -138,6 +138,7 @@
     $('b-adress-label').textContent=biz?'Adress till lokalen':'Gatuadress';
     document.querySelectorAll('label[data-f]').forEach(function(l){l.innerHTML=biz?l.dataset.f:l.dataset.p});
 
+    if($('assess').checked)rows.push(['Gratis bedömning på plats','0 kr','disc']);
     $('sum-rows').innerHTML=rows.map(function(r){return '<li'+(r[2]?' class="'+r[2]+'"':'')+'><span>'+r[0]+'</span><span>'+r[1]+'</span></li>'}).join('');
     $('sum-title').textContent=title;$('sum-sub').textContent=sub;
     if(big!==shown)tween(big);
@@ -158,6 +159,7 @@
   document.querySelectorAll('[data-step-s]').forEach(function(b){b.addEventListener('click',function(){sNum.value=clamp(+sNum.value+ +b.dataset.stepS,0,clamp(num.value,1,200));calc()})});
   document.querySelectorAll('input[name=tjanst],input[name=kund]').forEach(function(r){r.addEventListener('change',calc)});
   over.addEventListener('change',calc);
+  $('assess').addEventListener('change',calc);
   sOn.addEventListener('change',function(){sRow.hidden=!sOn.checked;if(sOn.checked&&+sNum.value===0)sNum.value=Math.min(clamp(num.value,1,200),INGAR);calc()});
   document.querySelectorAll('[data-pick]').forEach(function(a){a.addEventListener('click',function(){
     $('k-privat').checked=true;$('t-'+a.dataset.pick).checked=true;goStep(1);calc();
@@ -233,6 +235,7 @@
     var base={
       'Kund':state.kund,'Tjänst':state.tjanst,'Antal fönster':String(state.n),
       'Övervåning':state.over?'Ja':'Nej','Spröjs':state.s?state.s+' fönster':'Nej',
+      'Gratis bedömning (udda fönster/mellanglas/svårt att nå)':$('assess').checked?'JA, åk ut och titta först':'Nej',
       'Pris':state.pris,'Före RUT':state.fore||'–',
       'Kampanjkod':promo?promo.code+' (−'+promo.pct+' %, −'+kr(state.disc)+' kr)':'–',
       'Adress':$('b-adress').value.trim()+', '+$('b-ort').value,
