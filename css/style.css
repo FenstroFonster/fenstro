@@ -348,3 +348,12 @@ button{font:inherit;color:inherit}
 .modal__btns .btn{padding:13px 22px;font-size:15px}
 .modal__btns .btn{white-space:nowrap}
 @media(max-width:420px){.modal__btns .btn{flex:1;padding:13px 14px}}
+
+/* Julläge: syns bara 1 dec - 6 jan (klassen is-jul sätts i head) */
+.jul-bar,.jul-only{display:none}
+.is-jul .jul-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:9px var(--pad);background:var(--ink);color:var(--vit);font-size:14px;font-weight:600;text-align:center;text-decoration:none}
+.jul-bar svg{color:var(--frost);flex:none}
+.jul-bar b{color:var(--frost);transition:transform .2s}
+.jul-bar:hover b{transform:translateX(3px)}
+@media(max-width:420px){.is-jul .jul-bar{font-size:12.5px;gap:6px;padding:9px 12px}}
+.is-jul .jul-only{display:block;font-style:normal;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--glas-d);margin-bottom:2px}
