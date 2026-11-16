@@ -138,7 +138,7 @@
     $('b-adress-label').textContent=biz?'Adress till lokalen':'Gatuadress';
     document.querySelectorAll('label[data-f]').forEach(function(l){l.innerHTML=biz?l.dataset.f:l.dataset.p});
 
-    if($('assess').checked)rows.push(['Gratis bedömning på plats','0 kr','disc']);
+    if($('assess').checked)rows.push(['Gratis bedömning','0 kr','disc']);
     $('sum-rows').innerHTML=rows.map(function(r){return '<li'+(r[2]?' class="'+r[2]+'"':'')+'><span>'+r[0]+'</span><span>'+r[1]+'</span></li>'}).join('');
     $('sum-title').textContent=title;$('sum-sub').textContent=sub;
     if(big!==shown)tween(big);
@@ -260,7 +260,7 @@
     var base={
       'Kund':state.kund,'Tjänst':state.tjanst,'Antal fönster':String(state.n),
       'Övervåning':state.over?'Ja (har godkänt att bild kan behövas)':'Nej','Spröjs':state.s?state.s+' fönster':'Nej',
-      'Gratis bedömning (udda fönster/mellanglas/svårt att nå)':$('assess').checked?'JA, åk ut och titta först':'Nej',
+      'Gratis bedömning (udda fönster/mellanglas/svårt att nå)':$('assess').checked?'JA, be om bilder eller åk ut och titta först':'Nej',
       'Pris':state.pris,'Före RUT':state.fore||'–',
       'Kampanjkod':promo?promo.code+' (−'+promo.pct+' %, −'+kr(state.disc)+' kr)':'–',
       'Adress':$('b-adress').value.trim()+', '+$('b-ort').value,
