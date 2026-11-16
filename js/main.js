@@ -158,7 +158,32 @@
   document.querySelectorAll('[data-step-n]').forEach(function(b){b.addEventListener('click',function(){num.value=clamp(+num.value+ +b.dataset.stepN,1,200);calc()})});
   document.querySelectorAll('[data-step-s]').forEach(function(b){b.addEventListener('click',function(){sNum.value=clamp(+sNum.value+ +b.dataset.stepS,0,clamp(num.value,1,200));calc()})});
   document.querySelectorAll('input[name=tjanst],input[name=kund]').forEach(function(r){r.addEventListener('change',calc)});
-  over.addEventListener('change',calc);
+  /* Ruta som visas när man kryssar i övervåning. Olika text beroende på tjänst. */
+  var OVER_TXT={
+    ut:'Alla fönster på övervåningen går inte alltid att nå utifrån. Vi putsar med stege och bara där det är säkert, och kan be om en bild på huset innan. Når vi inte ett fönster som räknas som extra fönster tar vi bort det från fakturan.',
+    inut:'Alla fönster på övervåningen går inte alltid att nå utifrån. Då putsar vi oftast utsidan inifrån, om fönstret går att öppna. Vi kan be om en bild på huset innan. Går det inte alls och fönstret räknas som extra fönster tar vi bort det från fakturan.',
+    abo:'Fräscha Fönster gäller bara utsidan. Alla fönster på övervåningen går inte alltid att nå utifrån. Vi putsar med stege och bara där det är säkert, och kan be om en bild på huset innan. Når vi inte ett fönster som räknas som extra fönster tar vi bort det från fakturan.'
+  };
+  var overDlg=$('over-dlg'),overOk={};
+  function overClose(ok){
+    if(ok)overOk[val('tjanst')]=true;else over.checked=false;
+    if(overDlg.open)overDlg.close();
+    calc();over.focus();
+  }
+  function overAsk(){
+    var t=val('tjanst');
+    if(!over.checked||overOk[t])return;
+    if(overDlg&&overDlg.showModal){$('over-dlg-p').textContent=OVER_TXT[t];overDlg.showModal();$('over-ok').focus();}
+    else if(window.confirm(OVER_TXT[t]))overOk[t]=true;else over.checked=false;
+  }
+  over.addEventListener('change',function(){overAsk();calc()});
+  document.querySelectorAll('input[name=tjanst],input[name=kund]').forEach(function(r){r.addEventListener('change',function(){setTimeout(function(){overAsk();calc()},0)})});
+  if(overDlg){
+    $('over-ok').addEventListener('click',function(){overClose(true)});
+    $('over-no').addEventListener('click',function(){overClose(false)});
+    overDlg.addEventListener('cancel',function(e){e.preventDefault();overClose(false)});
+  }
+
   $('assess').addEventListener('change',calc);
   sOn.addEventListener('change',function(){sRow.hidden=!sOn.checked;if(sOn.checked&&+sNum.value===0)sNum.value=Math.min(clamp(num.value,1,200),INGAR);calc()});
   document.querySelectorAll('[data-pick]').forEach(function(a){a.addEventListener('click',function(){
@@ -234,7 +259,7 @@
     }
     var base={
       'Kund':state.kund,'Tjänst':state.tjanst,'Antal fönster':String(state.n),
-      'Övervåning':state.over?'Ja':'Nej','Spröjs':state.s?state.s+' fönster':'Nej',
+      'Övervåning':state.over?'Ja (har godkänt att bild kan behövas)':'Nej','Spröjs':state.s?state.s+' fönster':'Nej',
       'Gratis bedömning (udda fönster/mellanglas/svårt att nå)':$('assess').checked?'JA, åk ut och titta först':'Nej',
       'Pris':state.pris,'Före RUT':state.fore||'–',
       'Kampanjkod':promo?promo.code+' (−'+promo.pct+' %, −'+kr(state.disc)+' kr)':'–',
