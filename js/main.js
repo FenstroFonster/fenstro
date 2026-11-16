@@ -77,8 +77,8 @@
     abo: {namn:'Fräscha Fönster, abonnemang', bas:400, extra:10, over:75,  gang:4}
   };
   var FORETAG={
-    ut:  {namn:'Utvändigt, företag',          bas:500, over:150},
-    inut:{namn:'In- och utvändigt, företag',  bas:1000,over:250}
+    ut:  {namn:'Utvändigt, företag',          bas:500, extra:18, over:150},
+    inut:{namn:'In- och utvändigt, företag',  bas:1000,extra:30, over:250}
   };
   var INGAR=20,SPROJS=10;
   /* Kampanjkoder. Bara hashade, så koderna går inte att läsa i sidans kod. */
@@ -121,16 +121,16 @@
       big=efter;sub=p.gang>1?'per gång efter RUT-avdrag':'efter RUT-avdrag';title=p.namn;
       state={disc:disc,kund:'Privatperson',tjanst:p.namn,pris:kr(efter)+' kr efter RUT'+(p.gang>1?' per gång ('+kr(efter*4)+' kr/år)':''),fore:kr(gang)+' kr'};
     }else{
-      var f=FORETAG[t],ovf=over.checked?f.over:0,spf=s*SPROJS,fullf=f.bas+ovf+spf,discf=promo?Math.round(fullf*promo.pct/100):0,tot=fullf-discf;
+      var f=FORETAG[t],extraf=extraN*f.extra,ovf=over.checked?f.over:0,spf=s*SPROJS,fullf=f.bas+extraf+ovf+spf,discf=promo?Math.round(fullf*promo.pct/100):0,tot=fullf-discf;
       rows.push(['Grundpris, upp till '+INGAR+' fönster',kr(f.bas)+' kr']);
+      if(extraN)rows.push([extraN+' extra fönster × '+f.extra+' kr',kr(extraf)+' kr']);
       if(ovf)rows.push(['Övervåning',kr(ovf)+' kr']);
       if(spf)rows.push(['Spröjs, '+s+' × '+SPROJS+' kr',kr(spf)+' kr']);
       if(discf)rows.push(['Kampanjkod −'+promo.pct+' %','−'+kr(discf)+' kr','disc']);
       rows.push(['Totalt, ingen moms tillkommer',kr(tot)+' kr','tot']);
-      big=tot;sub=extraN?'plus extra fönster, vi bekräftar priset':'totalpris, ingen moms tillkommer';title=f.namn;
-      state={disc:discf,kund:'Företag',tjanst:f.namn,pris:kr(tot)+' kr'+(extraN?' + '+extraN+' extra fönster (pris bekräftas)':''),fore:''};
+      big=tot;sub='totalpris, ingen moms tillkommer';title=f.namn;
+      state={disc:discf,kund:'Företag',tjanst:f.namn,pris:kr(tot)+' kr',fore:''};
     }
-    $('biz-note').hidden=!(kund==='foretag'&&extraN>0);
     $('rut-note').hidden=kund!=='privat';
     var biz=kund==='foretag';
     $('b-namn-label').textContent=biz?'Kontaktperson':'Namn';
