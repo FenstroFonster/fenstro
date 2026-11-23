@@ -297,12 +297,6 @@ button{font:inherit;color:inherit}
 .qr img{flex:none;width:112px;height:112px;border-radius:8px}
 .qr span{font-size:14px;line-height:1.45;color:var(--skiffer)}
 .qr b{display:block;color:var(--ink);font-size:15px;margin-bottom:2px}
-.reco{display:flex;align-items:center;gap:16px;padding:14px 20px 14px 14px;background:var(--vit);border:1px solid var(--linje);border-radius:16px;color:var(--ink);text-decoration:none;max-width:340px;transition:border-color .15s}
-.reco:hover{border-color:var(--glas)}
-.reco__score{flex:none;display:grid;place-items:center;width:64px;height:64px;border-radius:12px;background:var(--ink);color:var(--vit);font-size:24px;font-weight:800;letter-spacing:-.03em}
-.reco__txt{font-size:14px;line-height:1.45;color:var(--skiffer)}
-.reco__txt b{display:block;color:var(--ink);font-size:15px}
-.reco__stars{display:flex;gap:2px;margin-bottom:4px}
 @media (max-width:720px){.qr{display:none}}
 
 /* FAQ */
