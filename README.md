@@ -8,6 +8,7 @@ Sidan ligger på https://fenstrofonster.se och publiceras med GitHub Pages från
 
 - `index.html` – hela sidan, med stil och prisräknare
 - `404.html` – sidan som visas om en länk inte finns
+- `fonsterputs-<ort>.html` – en sida per ort för Google. Byggs av `_bygg/orter.py`, ändra texterna där och kör `python3 _bygg/orter.py` (uppdaterar även `sitemap.xml`)
 - `img/` – logga, ikoner och bilder
 - `fonts/` – typsnittet Montserrat (fri licens, se `fonts/OFL.txt`)
 - `CNAME` – kopplar sidan till fenstrofonster.se

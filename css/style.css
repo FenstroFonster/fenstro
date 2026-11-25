@@ -281,6 +281,9 @@ button{font:inherit;color:inherit}
 .areas{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0;padding:0;list-style:none}
 .areas li{padding:10px 18px;border-radius:999px;background:var(--vit);border:1px solid var(--linje);font-weight:600;font-size:15px}
 .areas li.home{background:var(--ink);color:var(--vit);border-color:var(--ink)}
+.areas li:has(a){padding:0}
+.areas a{display:block;padding:10px 18px;text-decoration:none;border-radius:999px}
+.areas a:hover{background:var(--is)}
 .two .lead{margin-top:18px}
 .two p+p{margin-top:16px}
 @media (max-width:860px){.two{grid-template-columns:1fr}}
